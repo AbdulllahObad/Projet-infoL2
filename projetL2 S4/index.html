@@ -1,0 +1,27 @@
+.container
+%form.board#board
+.card.card--assigned#card-assigned
+.card__front
+.slots
+- (0..23).each do |i|
+.slot
+%input.control(id="card-#{i}" type="checkbox")
+%label.card(class="card-#{i}" for="card-#{i}")
+.card__grips
+.card__front
+
+%footer.footer
+%h1.title
+For playing in real life
+%small.subtitle
+Interact with people on the same room… while on keyboard :v
+
+%button.btn--rematch#btn-rematch(type="reset")
+%span.btn--rematch-front
+Rematch
+
+.btn--mode
+%input.btn--mode__input#btn-mode(type='checkbox')
+%label.btn--mode__label(for='btn-mode')
+Special Mode
+%i(aria-hidden="true")
