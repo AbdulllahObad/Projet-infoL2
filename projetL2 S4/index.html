@@ -1,27 +1,177 @@
-.container
-%form.board#board
-.card.card--assigned#card-assigned
-.card__front
-.slots
-- (0..23).each do |i|
-.slot
-%input.control(id="card-#{i}" type="checkbox")
-%label.card(class="card-#{i}" for="card-#{i}")
-.card__grips
-.card__front
+<!DOCTYPE html>
+<html lang="en">
 
-%footer.footer
-%h1.title
-For playing in real life
-%small.subtitle
-Interact with people on the same room… while on keyboard :v
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Two-player character guessing game">
+    <link rel="icon" href="/assets/images/logo.webp" />
+    <title>QuessWhoOnline</title>
+    <link rel="preload" as="style" onload="this.rel='stylesheet'" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="preload" as="style" onload="this.rel='stylesheet'"
+        href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+    <link rel="preload" as="style" onload="this.rel='stylesheet'"
+        href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap">
+    <link rel="stylesheet" href="/styles/css/main.min.css" />
+    <script src="https://kit.fontawesome.com/88d2a979b7.js" crossorigin="anonymous"></script>
+</head>
 
-%button.btn--rematch#btn-rematch(type="reset")
-%span.btn--rematch-front
-Rematch
+<body>
 
-.btn--mode
-%input.btn--mode__input#btn-mode(type='checkbox')
-%label.btn--mode__label(for='btn-mode')
-Special Mode
-%i(aria-hidden="true")
+    <main role="main">
+
+        <script src=/_content/NToastNotify/toastr.js?7.0.0.0 type="text/javascript"></script>
+        <script>
+            if (nToastNotify) {
+                nToastNotify.init({
+                    firstLoadEvent: 'DOMContentLoaded',
+                    messages: [],
+                    responseHeaderKey: 'X-NToastNotify-Messages',
+                    requestHeaderKey: 'X-Requested-With',
+                    libraryDetails: { "varName": "toastr", "scriptSrc": "https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js", "styleHref": "https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css", "options": { "positionClass": "toast-top-right", "progressBar": false, "type": "success" } },
+                    disableAjaxToasts: false
+                });
+            };
+        </script>
+
+        <div class="home">
+            <div class="home-container">
+                <div class="home-header">
+                    <img class="home-header__logo" src="/assets/images/logo.webp" alt="logo" />
+                    <h1>Guess Who Online</h1>
+                </div>
+                <div class="home-main">
+                    <button class="home-main__show-find-match-button" aria-label="find match">Find a game</button>
+                    <button class="home-main__show-create-match-button" aria-label="create match">Create a game</button>
+                </div>
+                <div class="home-bottom">
+                    <button class="home-bottom__show-informations-about-game-button"
+                        aria-label="show informations about game"><i class="fas fa-question"></i></button>
+                    <button class="home-bottom__mute-or-unmute-sounds-button" aria-label="mute or unmute sounds"><i
+                            class="fas fa-volume-mute home-bottom__mute-or-unmute-sounds-icon"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="create-match">
+            <div class="container mb-2">
+                <form class="create-match-form">
+                    <input class="id-match-input" type="hidden" />
+                    <input class="url-match-input" type="hidden" />
+
+                    <div class="form-row py-2">
+                        <div class="col mb-2">
+                            <label for="name">Name*</label>
+                            <input class="form-control name-match-input" id="name" type="text" maxlength=80 required />
+                        </div>
+                    </div>
+
+                    <div class="form-row py-2">
+                        <div class="col mb-2">
+                            <label for="password">Password</label>
+                            <input class="form-control password-match-input" id="password" maxlength=80
+                                type="password" />
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col text-center mb-2">
+                            <button type="button" class="btn btn-dark px-4 py-2 create-match__back-button"
+                                aria-label="back">Back</button>
+                        </div>
+                        <div class="col text-center">
+                            <button type="submit" class="btn px-4 py-2 create-match-button"
+                                aria-label="create">Create</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="find-match">
+            <div class="find-match__top-container">
+                <h2>Games</h2>
+                <button class="find-match__refresh-list" aria-label="refresh"><i class="fas fa-sync"></i></button>
+            </div>
+            <ul class="match-list">
+            </ul>
+
+            <button class="find-match__back-button btn btn-dark" aria-label="back">Back</button>
+        </div>
+
+        <div class="informations-about-game">
+            <button class="hide-informations-about-game-button" aria-label="hide information about game"><i
+                    class="fas fa-times"></i></button>
+
+            <div>
+                <div class="rules">
+                    <h2 class="text-center">Rules:</h2>
+                    <p>
+                        1. You have to choose one of 24 characters.<br />
+                        2. Your task is to guess, which character the opponent chose.<br />
+                        3. Ask the questions about the appearance of the opponent’s character, so that it is possible to
+                        answer "yes” or “no”<br />
+
+                        For instance:<br />
+                        <em>
+                            -Does your character have brown hair?<br />
+                            -yes
+                        </em>
+                        <br />
+                        4. After asking a question, delete mismatched characters by clicking in character. If you’re not
+                        sure, the next click will set the question mark on the character and then, click finish
+                        turn.<br />
+                        5. If you are sure about your opponent’s character, you can guess by selecting the name of the
+                        character and then, confirm your choice by clicking the button “Guess”.<br />
+                        6. If you guessed correctly, you won, if not, you lose.
+                    </p>
+                </div>
+
+                <div class="authors">
+                    <h2 class="text-center">Authors:</h2>
+                    <p class="text-center">
+                        Proggramer: <a href="https://www.linkedin.com/in/krystian-skwierawski/" target="_blank"
+                            rel="noopener">Krystian Skwierawski</a><br />
+                        Graphic designer: <a href="https://wiktoriaskorek.com/" target="_blank" rel="noopener">Wiktoria
+                            Skórek</a><br />
+                        Sound technician: Bartek Budek
+
+                    </p>
+                    <a class="github-link" href="https://github.com/KrystianSkwierawski/GuessWhoOnline" target="_blank"
+                        rel="noopener"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <script src="/lib/microsoft/signalr/dist/browser/signalr.min.js" defer></script>
+        <script type="module" src="/js/home.js" defer></script>
+        <script type="module" src="/js/gameCreatorHub.js" defer></script>
+
+    </main>
+
+    <script src="/lib/jquery/dist/jquery.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" defer></script>
+    <script defer>
+        function notificationme() {
+            toastr.options = {
+                "closeButton": false,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": true,
+                "preventDuplicates": true,
+                "onclick": null,
+                "showDuration": "100",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "show",
+                "hideMethod": "hide"
+            };
+        }
+    </script>
+
+</body>
+
+</html>
