@@ -1,5 +1,10 @@
 $(document).ready(function(){
 
-    console.log(json.jeu1);
+    $.getJSON("js/jeu1.json",function(data){
+
+        console.log("Contenu : ");
+        console.log(data);
+
+    });
 
 });
