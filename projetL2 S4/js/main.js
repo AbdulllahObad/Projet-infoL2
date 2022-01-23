@@ -2,22 +2,25 @@ $(document).ready(function(){
 
     $.getJSON("js/jeu1.json",function(data){
 
-        var nombres_lignes = data["ligne"];
-        var nombres_colonnes = data["colonne"];
+        var lignes = data["ligne"];
+        var colonnes = data["colonne"];
 
-        for (var elements in data["possibilites"]) {
+        var all_characters =  $('.toutesPersonnages');
 
-            console.log(elements["0"]["prenom"]);
+        for(let i = 0;i<lignes;i++){
 
-            /*for(let i = 0;i<nombres_lignes;i++){
+            var div = $("<div></div>");
+            var ligne = (div).attr('class','ligne');
 
-                for(let j = 0;j<nombres_colonnes;j++){
+            for(let j = i+(5*i);(j-i-(5*i))<colonnes;j++){
 
-                    console.log(elements);
+                var path_image = 'images/'+data["possibilites"][j]["fichier"];
 
-                }
+                ligne.append($("<img>").attr('src',path_image));
 
-            }*/
+            }
+
+            all_characters.append(ligne);
 
         }
 
