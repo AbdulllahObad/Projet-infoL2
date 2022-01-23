@@ -37,22 +37,23 @@ $(document).ready(function(){
 
 
 
-/*function select(){ //for the select part
-    $.getjson(jeu1.json, function(data){
+/*function select( ){ //for the select part
+    $.getJSON("js/jeu1.json", function(data){
         let n=1;
 
-        $.each(data, function(i, o){
         for(let i of data["possibilites"]){ 
             for(let j in data["possibilites"][i]){ 
 
-            $(#list1).append("<option value='n'>j</option> <br>");
+            $(#list1).append("<option value="+n+">"+j+"</option> <br>");
             n++;}}
-        }
 
-    });
-}
 
-function selection(liste){ //for the potion part
+        });
+
+
+}*/
+
+/*function selection(liste){ //for the potion part
 
     console.log(liste.options[liste.options.selectedIndex].value);
 
