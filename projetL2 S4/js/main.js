@@ -1,4 +1,4 @@
-$(document).ready(function(){
+function afficheListePerso(){
 
     $.getJSON("js/jeu1.json",function(data){
 
@@ -25,5 +25,11 @@ $(document).ready(function(){
         }
 
     });
+
+}
+
+$(document).ready(function(){
+
+    afficheListePerso();
 
 });
