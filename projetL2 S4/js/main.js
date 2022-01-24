@@ -26,8 +26,7 @@ function afficheListePerso() {
 
     });
 
-<<<<<<< HEAD
-});
+
 
 
 
@@ -68,8 +67,7 @@ function afficheListePerso() {
 
 
 }*/
-=======
-}
+
 
 $(document).ready(function () {
 
@@ -83,4 +81,3 @@ function eliminer() {
     var x = document.getElementById('question').value;
     console.log(x);
 }
->>>>>>> ed83dc7cd55a3458a5ae1f1db2c59b2003c38714
