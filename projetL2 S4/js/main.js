@@ -59,15 +59,14 @@ function selection(){ //for the potion part
 
 
 
-    var table=[];
-    table.length=0;
-
+    document.getElementById("list2").options.length = 0;
 
     $.getJSON("js/jeu1.json", function(data){
   var liste= document.getElementById('list1');
     
 var value = liste.options[liste.selectedIndex].value;
     
+var table=[];
 
 
 $.each(data["possibilites"], function(i,o){
