@@ -38,47 +38,70 @@ $(document).ready(function () {
 
 
 
-/*function select( ){ //for the select part
+$(document).ready(function () { //for the select part
     $.getJSON("js/jeu1.json", function(data){
-        let n=1;
+        
+      
+      $.each( data["possibilites"][0],function(i,o){
+       // console.log(i);
+        if(i!= "fichier"){ 
+        $("#list1").append("<option value="+i+">"+i+"</option> <br>");
+        }
 
-        for(let i of data["possibilites"]){ 
-            for(let j in data["possibilites"][i]){ 
-
-            $(#list1).append("<option value="+n+">"+j+"</option> <br>");
-            n++;}}
-
+      });
 
         });
 
 
-}*/
+});
 
-/*function selection(liste){ //for the potion part
-
-    console.log(liste.options[liste.options.selectedIndex].value);
-
-    /*if(liste.options[liste.options.selectedIndex].value == "2"){
-        $("#list2").append("<option value='6'>Homme</option> <option value='7'> Femme</option>");
-    }
+function selection(){ //for the potion part
 
 
 
+    var table=[];
+    table.length=0;
+
+
+    $.getJSON("js/jeu1.json", function(data){
+  var liste= document.getElementById('list1');
+    
+var value = liste.options[liste.selectedIndex].value;
     
 
 
-}*/
+$.each(data["possibilites"], function(i,o){
 
-
-/*$(document).ready(function () {
-
-    afficheListePerso();
+    for(let i in o){
+        if(i==value){
+            if(!table.includes(o[i])){
+               table.push(o[i]);
+        }
+       
+    }}
+    
+    
+    
 
 });
+
+
+console.log(table);
+for(let i of table){
+        $("#list2").append("<option value="+i+">"+i+"</option> ");
+
+    }
+
+
+});
+
+}
+
+
 
 
 
 function eliminer() {
     var x = document.getElementById('question').value;
     console.log(x);
-}*/
+}
