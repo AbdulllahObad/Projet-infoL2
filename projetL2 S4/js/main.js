@@ -51,23 +51,19 @@ $(document).ready(function () { //for the select part
       });
 
         });
-
-
 });
 
+
+/******************************************************************************************************* */
+
+
 function selection(){ //for the potion part
-
-
-
     document.getElementById("list2").options.length = 0;
 
     $.getJSON("js/jeu1.json", function(data){
   var liste= document.getElementById('list1');
-    
 var value = liste.options[liste.selectedIndex].value;
-    
 var table=[];
-
 
 $.each(data["possibilites"], function(i,o){
 
@@ -78,25 +74,14 @@ $.each(data["possibilites"], function(i,o){
         }
        
     }}
-    
-    
-    
-
 });
 
-
-console.log(table);
-for(let i of table){
-        $("#list2").append("<option value="+i+">"+i+"</option> ");
-
-    }
-
-
+       for(let i of table){
+             $("#list2").append("<option value="+i+">"+i+"</option> ");}
 });
-
 }
 
-
+/***************************************************************************************************************** */
 
 
 
