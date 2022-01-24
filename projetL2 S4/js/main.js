@@ -1,4 +1,4 @@
-function afficheListePerso() {
+$(document).ready(function () {
 
     $.getJSON("js/jeu1.json", function (data) {
 
@@ -25,6 +25,7 @@ function afficheListePerso() {
         }
 
     });
+});
 
 
 
@@ -69,7 +70,7 @@ function afficheListePerso() {
 }*/
 
 
-$(document).ready(function () {
+/*$(document).ready(function () {
 
     afficheListePerso();
 
@@ -80,4 +81,4 @@ $(document).ready(function () {
 function eliminer() {
     var x = document.getElementById('question').value;
     console.log(x);
-}
+}*/
