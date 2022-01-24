@@ -1,6 +1,6 @@
 {
     "images": "personnages/",
-    "ligne": "2",
+    "ligne": "6",
     "colonne": "6",
     "possibilites": {
         "0": {
@@ -174,7 +174,7 @@
         "21": {
             "fichier": "Suzane.png",
             "prenom": "Suzane",
-            "genre": "femme",
+            "genre": "Femme",
             "cheveux": "blanc",
             "lunettes": "non",
             "chauve": "non"
