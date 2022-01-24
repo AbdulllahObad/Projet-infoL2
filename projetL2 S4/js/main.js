@@ -26,6 +26,49 @@ function afficheListePerso() {
 
     });
 
+<<<<<<< HEAD
+});
+
+
+
+
+
+/*********************************************************************************/
+//Ali select tag
+
+
+
+/*function select( ){ //for the select part
+    $.getJSON("js/jeu1.json", function(data){
+        let n=1;
+
+        for(let i of data["possibilites"]){ 
+            for(let j in data["possibilites"][i]){ 
+
+            $(#list1).append("<option value="+n+">"+j+"</option> <br>");
+            n++;}}
+
+
+        });
+
+
+}*/
+
+/*function selection(liste){ //for the potion part
+
+    console.log(liste.options[liste.options.selectedIndex].value);
+
+    /*if(liste.options[liste.options.selectedIndex].value == "2"){
+        $("#list2").append("<option value='6'>Homme</option> <option value='7'> Femme</option>");
+    }
+
+
+
+    
+
+
+}*/
+=======
 }
 
 $(document).ready(function () {
@@ -38,5 +81,11 @@ $(document).ready(function () {
 
 function eliminer() {
     var x = document.getElementById('question').value;
+<<<<<<< HEAD
     if ()
 }
+=======
+    console.log(x);
+}
+>>>>>>> ed83dc7cd55a3458a5ae1f1db2c59b2003c38714
+>>>>>>> 52c5fadbbb2cf492b609c4aba482045ac14ef330
