@@ -45,21 +45,7 @@ input {
     padding: 1%;
 }
 
-select {
-    background-color: transparent;
-    color: white;
-    border-radius: 5%;
-    border-color: black;
-}
 
-select::after{
-
-    background-color: transparent;
-    color: black;
-    border-radius: 5%;
-    border-color: black;
-
-}
 
 h1 {
     text-align: center;
