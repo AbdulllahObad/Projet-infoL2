@@ -38,5 +38,5 @@ $(document).ready(function () {
 
 function eliminer() {
     var x = document.getElementById('question').value;
-    console.log(x);
+    if ()
 }
