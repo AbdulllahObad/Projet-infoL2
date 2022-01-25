@@ -5,16 +5,30 @@
         <title>QuiEstCe</title>
         <meta name="description" content="this is our play" />
                 <link rel="stylesheet" href="css.css">
+                <script type="text/javascript" src="main.js"></script>
     
     </head>
     <body>
 
-        <h1>Qui est ce ?</h1>
-        <div class="jeu">
+<head>
+    <meta charset="UTF-8" />
+    <title>QuiEstCe</title>
+    <meta name="description" content="this is our play" />
+    <link rel="stylesheet" href="css.css">
+
+</head>
+
+<body>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+
+    <h1>Qui est ce ?</h1>
+    <div class="jeu">
         <div class="toutesPersonnages">
             <div class="ligne">
                 <div class="personnage">
-                <img src="ayman.jpg" alt="" width="100px" height="100px">
+
                 </div>
             </div>
         </div>
@@ -24,22 +38,22 @@
 
         <div class="f">
 
-        <h3>Votre question est:<h3>
+            <h3>Votre question est:<h3>
 
             <form action="">
             <div class="question">
             <span>Question</span>
-            <select name="question" id="question">
-                    <option value="1">Prenom</option>
+            <select id="list1" name="question"  onclick="selection()" >
+            <!--    <option value="1">Prenom</option>
                     <option value="2">Genre</option>
                     <option value="3">Cheveux</option>
                     <option value="4">Lunettes</option>
-                    <option value="5">Chauve</option>
+                    <option value="5">Chauve</option>-->
                 </select>
             </div>
             <div class="question">
                 <span>Reponse</span>
-                <select name="reponse" id="reponse">
+                <select id="list2" name="reponse" >
                     </select>
                 </div>
                 <br>
@@ -50,13 +64,14 @@
                 </div>
                 <div class="boutons">
                   <input type="button" value="Estimer">
-                  <input type="button" value="Valider">
+                  <input type="button" value="Valider" onclick="changeFunc()">
                   <input id="triche" type="button" value="Mode Triche">
                 </div>
             </form>
 
+        </div>
     </div>
-</div>
 
-    </body>
-    </html>
+</body>
+
+</html>
