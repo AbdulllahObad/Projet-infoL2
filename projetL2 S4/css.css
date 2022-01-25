@@ -43,6 +43,7 @@ input {
     border-radius: 5%;
     border-color: transparent;
     padding: 1%;
+    margin: 1px;
 }
 
 select {
