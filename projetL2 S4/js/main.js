@@ -1,3 +1,37 @@
+function indexPersonnage(data){
+
+    var nombre_personnages = nombrePersonnages(data);
+
+    return Math.floor((Math.random() * nombre_personnages) + 1);
+
+}
+
+function nombrePersonnages(data){
+
+    return data["ligne"]*data["colonne"];
+
+}
+
+function personnageChoisi(data){
+
+    return data["possibilites"][indexPersonnage(data)];
+
+}
+
+function compareCaracteristique(personnage_choisi,caracteristique,reponse){
+
+    if(personnage_choisi[caracteristique]==reponse){
+
+        return true;
+
+    }else{
+
+        return false;
+
+    }
+
+}
+
 $(document).ready(function () {
 
     $.getJSON("js/jeu1.json", function (data) {
@@ -7,22 +41,49 @@ $(document).ready(function () {
 
         var all_characters = $('.toutesPersonnages');
 
+        var personnage_choisi = personnageChoisi(data);
+
+        console.log(personnage_choisi);
+
         for (let i = 0; i < lignes; i++) {
 
             var div = $("<div></div>");
             var ligne = (div).attr('class', 'ligne');
 
-            for (let j = i + (5 * i); (j - i - (5 * i)) < colonnes; j++) {
+            for (let j = i + ((colonnes-1) * i); (j - i - ((colonnes-1) * i)) < colonnes; j++) {
+
+                console.log(j);
 
                 var path_image = 'images/' + data["possibilites"][j]["fichier"];
 
-                ligne.append($("<img>").attr('src', path_image));
+                ligne.append($("<img>").attr({'src' : path_image,'height':'150','width':"100"}));
 
             }
 
             all_characters.append(ligne);
 
         }
+
+        $("#valider").click(function(){
+
+            console.log($("#reponse :selected").text());
+            console.log($("#question :selected").text());
+
+            if(compareCaracteristique(personnage_choisi,$("#question :selected").text(),$("#reponse :selected").text())){
+
+                $("#affichageReponse").empty();
+
+                $("#affichageReponse").append("OUI");
+
+            }else{
+
+                $("#affichageReponse").empty();
+
+                $("#affichageReponse").append("NON");
+
+            }
+
+        });
 
     });
 });
@@ -44,7 +105,7 @@ $(document).ready(function () { //for the select part
       $.each( data["possibilites"][0],function(i,o){
        // console.log(i);
         if(i!= "fichier"){ 
-        $("#list1").append("<option value="+i+">"+i+"</option> <br>");
+        $("#question").append("<option value="+i+">"+i+"</option> <br>");
         }
 
       });
@@ -60,7 +121,7 @@ function selection(){ //for the potion part
     document.getElementById("list2").options.length = 0;
 
     $.getJSON("js/jeu1.json", function(data){
-  var liste= document.getElementById('list1');
+  var liste= document.getElementById('#question');
     
        var value = liste.options[liste.selectedIndex].value;
     

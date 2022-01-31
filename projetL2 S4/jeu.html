@@ -1,77 +1,70 @@
 <!DOCTYPE html>
 <html>
     <head>
+
         <meta charset="UTF-8" />
         <title>QuiEstCe</title>
         <meta name="description" content="this is our play" />
-                <link rel="stylesheet" href="css.css">
-                <script type="text/javascript" src="main.js"></script>
+        <link rel="stylesheet" href="css.css">
     
     </head>
+
     <body>
 
-<head>
-    <meta charset="UTF-8" />
-    <title>QuiEstCe</title>
-    <meta name="description" content="this is our play" />
-    <link rel="stylesheet" href="css.css">
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
 
-</head>
+        <h1>Qui est ce ?</h1>
+        <div class="jeu">
+            <div class="toutesPersonnages">
+                <div class="ligne">
+                    <div class="personnage">
 
-<body>
-
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
-
-    <h1>Qui est ce ?</h1>
-    <div class="jeu">
-        <div class="toutesPersonnages">
-            <div class="ligne">
-                <div class="personnage">
-
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <br>
-        <br>
+            <br>
+            <br>
 
-        <div class="f">
+            <div class="f">
 
-            <h3>Votre question est:<h3>
+                <h3>Votre question est:<h3>
 
-            <form action="">
-            <div class="question">
-            <span>Question</span>
-            <select id="list1" name="question"  onclick="selection()" >
-            <!--    <option value="1">Prenom</option>
-                    <option value="2">Genre</option>
-                    <option value="3">Cheveux</option>
-                    <option value="4">Lunettes</option>
-                    <option value="5">Chauve</option>-->
+                <form action="">
+                <div class="question">
+                <span>Question</span>
+                <select id="question" name="question"  onclick="selection()" >
+                <!--    <option value="1">Prenom</option>
+                        <option value="2">Genre</option>
+                        <option value="3">Cheveux</option>
+                        <option value="4">Lunettes</option>
+                        <option value="5">Chauve</option>-->
                 </select>
-            </div>
-            <div class="question">
-                <span>Reponse</span>
-                <select id="list2" name="reponse" >
+                </div>
+                <div class="question">
+                    <span>Reponse</span>
+                    <select id="reponse" name="reponse" >
                     </select>
                 </div>
                 <br>
                 <br>
                 <div class="boutons">
-                  <input type="submit" value="Ajouter">
-                  <input type="reset" value="Enlever">
+                    <input type="submit" value="Ajouter">
+                    <input type="reset" value="Enlever">
                 </div>
                 <div class="boutons">
-                  <input type="button" value="Estimer">
-                  <input type="button" value="Valider" onclick="changeFunc()">
-                  <input id="triche" type="button" value="Mode Triche">
+                    <input type="button" value="Estimer">
+                    <input type="button" value="Valider" id="valider">
+                    <input id="triche" type="button" value="Mode Triche">
                 </div>
-            </form>
+                </form>
 
+                <div id="affichageReponse" align="center"></div>
+
+            </div>
         </div>
-    </div>
 
-</body>
+    </body>
 
 </html>

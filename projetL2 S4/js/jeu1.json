@@ -1,7 +1,12 @@
 {
     "images": "personnages/",
+<<<<<<< Updated upstream
     "ligne": "3",
     "colonne": "6",
+=======
+    "ligne": "2",
+    "colonne": "12",
+>>>>>>> Stashed changes
     "possibilites": {
         "0": {
             "fichier": "Alfred.png",
