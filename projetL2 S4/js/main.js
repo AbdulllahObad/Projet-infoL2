@@ -155,7 +155,10 @@ function selection(){ //for the potion part
 
 
 
+ function ajouter(){
+     let n=getElementById("question");
 
+ }
 
 
 /************************************************************************************************************** */
