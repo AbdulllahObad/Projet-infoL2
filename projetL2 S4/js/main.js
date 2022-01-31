@@ -56,7 +56,7 @@ $(document).ready(function () {
 
                 var path_image = 'images/' + data["possibilites"][j]["fichier"];
 
-                ligne.append($("<img>").attr({'src' : path_image,'height':'150','width':"100"}));
+                ligne.append($("<img>").attr({'src' : path_image,'height':'150','width':"100",'id':data['possibilites'][j]['prenom']}));
 
             }
 
@@ -82,6 +82,8 @@ $(document).ready(function () {
                 $("#affichageReponse").append("NON");
 
             }
+
+            
 
         });
 
