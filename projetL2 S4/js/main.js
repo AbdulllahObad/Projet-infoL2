@@ -81,9 +81,7 @@ $(document).ready(function () {
 
                 $("#affichageReponse").append("NON");
 
-            }
-
-            
+            } 
 
         });
 
