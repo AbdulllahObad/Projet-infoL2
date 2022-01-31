@@ -35,6 +35,7 @@ function compareCaracteristique(personnage_choisi, caracteristique, reponse) {
 $(document).ready(function () {
 
     $.getJSON("js/jeu1.json", function (data) {
+        
         question();
 
         var lignes = data["ligne"];
