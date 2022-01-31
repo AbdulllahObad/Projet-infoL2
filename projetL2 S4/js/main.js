@@ -35,6 +35,7 @@ function compareCaracteristique(personnage_choisi,caracteristique,reponse){
 $(document).ready(function () {
 
     $.getJSON("js/jeu1.json", function (data) {
+        question();
 
         var lignes = data["ligne"];
         var colonnes = data["colonne"];
@@ -98,8 +99,8 @@ $(document).ready(function () {
 
 
 
-$(document).ready(function () { //for the select part
-    $.getJSON("js/jeu1.json", function(data){
+function question() { //for the select part
+   $.getJSON("js/jeu1.json", function(data){
         
       
       $.each( data["possibilites"][0],function(i,o){
@@ -113,7 +114,7 @@ $(document).ready(function () { //for the select part
         });
 
 
-});
+}
  
 
 /******************************************************************************************************** */
@@ -151,7 +152,6 @@ function selection(){ //for the potion part
                         }
                     });
                 }
-
 
 
 
