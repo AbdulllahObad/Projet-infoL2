@@ -56,7 +56,7 @@ $(document).ready(function () {
 
                 var path_image = 'images/' + data["possibilites"][j]["fichier"];
 
-                ligne.append($("<img>").attr({'src' : path_image,'height':'150','width':"100"}));
+                ligne.append($("<img>").attr({'src' : path_image,'height':'150','width':"100",'id':data['possibilites'][j]['prenom']}));
 
             }
 
@@ -82,6 +82,8 @@ $(document).ready(function () {
                 $("#affichageReponse").append("NON");
 
             }
+
+            
 
         });
 
@@ -118,10 +120,10 @@ $(document).ready(function () { //for the select part
 
 /******************************************************************************************************** */
 function selection(){ //for the potion part
-    document.getElementById("list2").options.length = 0;
+    document.getElementById("reponse").options.length = 0;
 
     $.getJSON("js/jeu1.json", function(data){
-  var liste= document.getElementById('#question');
+  var liste= document.getElementById('question');
     
        var value = liste.options[liste.selectedIndex].value;
     
@@ -146,7 +148,7 @@ function selection(){ //for the potion part
 
         
      for(let i of table){
-     $("#list2").append("<option value="+i+">"+i+"</option> ");
+     $("#reponse").append("<option value="+i+">"+i+"</option> ");
 
                         }
                     });
