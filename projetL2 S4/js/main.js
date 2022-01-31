@@ -118,10 +118,10 @@ $(document).ready(function () { //for the select part
 
 /******************************************************************************************************** */
 function selection(){ //for the potion part
-    document.getElementById("list2").options.length = 0;
+    document.getElementById("reponse").options.length = 0;
 
     $.getJSON("js/jeu1.json", function(data){
-  var liste= document.getElementById('#question');
+  var liste= document.getElementById('question');
     
        var value = liste.options[liste.selectedIndex].value;
     
@@ -146,7 +146,7 @@ function selection(){ //for the potion part
 
         
      for(let i of table){
-     $("#list2").append("<option value="+i+">"+i+"</option> ");
+     $("#reponse").append("<option value="+i+">"+i+"</option> ");
 
                         }
                     });
