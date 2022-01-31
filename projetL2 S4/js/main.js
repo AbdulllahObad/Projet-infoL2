@@ -107,6 +107,7 @@ $(document).ready(function () {
 
 
 function question() { //for the select part
+<<<<<<< Updated upstream
     $.getJSON("js/jeu1.json", function (data) {
 
 
@@ -115,16 +116,33 @@ function question() { //for the select part
             if (i != "fichier") {
                 $("#question").append("<option value=" + i + ">" + i + "</option> <br>");
             }
+=======
 
-        });
+$.getJSON("js/jeu1.json", function(data){
+
+    $.each( data["possibilites"][0],function(i,o){
+
+        // console.log(i);
+
+        if(i!= "fichier"){ 
+
+            $("#question").append("<option value="+i+">"+i+"</option> <br>");
+>>>>>>> Stashed changes
+
+        }
 
     });
 
+<<<<<<< Updated upstream
+=======
+    });
+>>>>>>> Stashed changes
 
 }
 
 
 /******************************************************************************************************** */
+<<<<<<< Updated upstream
 function selection() { //for the potion part
     document.getElementById("reponse").options.length = 0;
 
@@ -146,13 +164,29 @@ function selection() { //for the potion part
 
                 }
             }
+=======
+function selection(){ //for the potion part
 
+    document.getElementById("reponse").options.length = 0;
 
+    $.getJSON("js/jeu1.json", function(data){
+>>>>>>> Stashed changes
 
+        var liste= document.getElementById('question');
 
-        });
+<<<<<<< Updated upstream
 
+=======
+        var value = liste.options[liste.selectedIndex].value;
 
+        var table=[];
+>>>>>>> Stashed changes
+
+        $.each(data["possibilites"], function(i,o){
+
+            for(let i in o){
+
+<<<<<<< Updated upstream
 
         for (let i of table) {
             $("#reponse").append("<option value=" + i + ">" + i + "</option> ");
@@ -166,3 +200,29 @@ function change(clicked_id) {
     var image = document.getElementById(clicked_id);
     image.src = 'images/' + clicked_id + "X.png";
 }
+=======
+            if(i==value){
+
+                if(!table.includes(o[i])){
+
+                    table.push(o[i]);
+
+                }
+
+            }
+            }
+
+        });
+
+        for(let i of table){
+
+            $("#reponse").append("<option value="+i+">"+i+"</option> ");
+
+        }
+
+    });
+
+}
+
+/************************************************************************************************************** */
+>>>>>>> Stashed changes
