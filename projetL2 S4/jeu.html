@@ -28,26 +28,24 @@
                 <h3>Votre question est:<h3>
 
                 <form action="">
-                <div class="question">
-                <span>Question</span>
-                <select id="question" name="question"  onclick="selection()"  >
-                <!--    <option value="1">Prenom</option>
-                        <option value="2">Genre</option>
-                        <option value="3">Cheveux</option>
-                        <option value="4">Lunettes</option>
-                        <option value="5">Chauve</option>-->
-                </select>
-                </div>
-                <div class="question">
+                <div class="question" id="test" >
+                 <span>Question</span>
+                 <select id="question" name="question" onclick="selection()" >
+               
+                 </select>
+                
                     <span>Reponse</span>
                     <select id="reponse" name="reponse" >
                     </select>
                 </div>
+                <div class="question" id="ajouter" >
+                    
+                </div>
                 <br>
                 <br>
                 <div class="boutons">
-                    <input type="submit" value="Ajouter" onclick="ajouter()">
-                    <input type="reset" value="Enlever">
+                    <input type="button" value="Ajouter" onclick="ajouter()">
+                    <input type="button" value="Enlever" onclick="enlver()">
                 </div>
                 <div class="boutons">
                     <input type="button" value="Estimer">

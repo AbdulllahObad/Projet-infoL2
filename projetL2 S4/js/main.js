@@ -87,7 +87,10 @@ $(document).ready(function () {
 
         });
 
+
     });
+   
+    
 });
 
 
@@ -141,14 +144,8 @@ function selection(){ //for the potion part
         }
        
     }}
-    
-    
-    
+       });
 
-        });
-
-
-        
      for(let i of table){
      $("#reponse").append("<option value="+i+">"+i+"</option> ");
 
@@ -157,3 +154,28 @@ function selection(){ //for the potion part
                 }
 
 /************************************************************************************************************** */
+
+
+
+function ajouter(){
+    /*var x = document.getElementById("question").innerHTML;
+    var html="<br><select><potion>and</option><option>or</option></select> "    ;
+    html+="<select id='question' "+onclick=selection()+">"+x+"</select>"
+    var y = document.getElementById("reponse").innerHTML;
+    html+="<select id='reponse' name='reponse'>"+y+"</select>";*/
+    var x = document.getElementById("test").innerHTML;
+    var html="<br><select><option>and</option><option>or</option></select> ";
+    html+=x;
+    document.getElementById("ajouter").innerHTML+=html;
+
+    
+
+
+    }
+
+    /*function enlver(){
+      document.getElementById("ajouter").options.length = 0;
+
+    }*/
+
+    
