@@ -163,10 +163,13 @@ function ajouter(){
     html+="<select id='question' "+onclick=selection()+">"+x+"</select>"
     var y = document.getElementById("reponse").innerHTML;
     html+="<select id='reponse' name='reponse'>"+y+"</select>";*/
+    var compteur=1;
     var x = document.getElementById("test").innerHTML;
-    var html="<br><select><option>and</option><option>or</option></select> ";
+    var html="<br><select id='compteur'><option>and</option><option>or</option></select> ";
     html+=x;
     document.getElementById("ajouter").innerHTML+=html;
+
+
 
     
 
