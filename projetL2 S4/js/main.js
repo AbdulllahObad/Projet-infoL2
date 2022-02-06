@@ -173,9 +173,11 @@ function ajouter(){
 
     }
 
-    /*function enlver(){
-      document.getElementById("ajouter").options.length = 0;
+    function enlver(){
+     var x= document.getElementById("ajouter");
+     
+       x.remove();
 
-    }*/
+    }
 
     
