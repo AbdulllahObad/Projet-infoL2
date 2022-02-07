@@ -68,7 +68,7 @@ $(document).ready(function () {
 
         $("#valider").click(function () {
 
-            if (compareCaracteristique(personnage_choisi, $("#question :selected").text(), $("#reponse :selected").text())) {
+            if (compareCaracteristique(personnage_choisi, $("#question"+compteur+" :selected").text(), $("#reponse"+compteur+" :selected").text())) {
 
                 $("#affichageReponse").empty();
 
