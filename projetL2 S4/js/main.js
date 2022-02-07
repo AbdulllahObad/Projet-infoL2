@@ -68,10 +68,10 @@ $(document).ready(function () {
 
         $("#valider").click(function(){
 
-            console.log($("#reponse :selected").text());
-            console.log($("#question :selected").text());
+            console.log($("#reponse"+compteur+"  :selected").text());
+            console.log($("#question"+compteur+" :selected").text());
 
-            if(compareCaracteristique(personnage_choisi,$("#question :selected").text(),$("#reponse :selected").text())){
+            if(compareCaracteristique(personnage_choisi,$("#question"+compteur+" :selected").text(),$("#reponse"+compteur+" :selected").text())){
 
                 $("#affichageReponse").empty();
 
@@ -101,7 +101,7 @@ $(document).ready(function () {
 /*********************************************************************************/
 //Ali select tag
 
-
+var compteur=1;
 
 function question() { //for the select part
     $.getJSON("js/jeu1.json", function (data) {
@@ -110,7 +110,7 @@ function question() { //for the select part
         $.each(data["possibilites"][0], function (i, o) {
             // console.log(i);
             if (i != "fichier") {
-                $("#question").append("<option value=" + i + ">" + i + "</option> <br>");
+                $("#question"+compteur).append("<option value=" + i + ">" + i + "</option> <br>");
             }
 
         });
@@ -124,11 +124,12 @@ function question() { //for the select part
  
 
 /******************************************************************************************************** */
+
 function selection(){ //for the potion part
-    document.getElementById("reponse").options.length = 0;
+    document.getElementById("reponse"+compteur).options.length = 0;
 
     $.getJSON("js/jeu1.json", function(data){
-  var liste= document.getElementById('question');
+  var liste= document.getElementById("question"+compteur);
     
        var value = liste.options[liste.selectedIndex].value;
     
@@ -147,7 +148,7 @@ function selection(){ //for the potion part
        });
 
      for(let i of table){
-     $("#reponse").append("<option value="+i+">"+i+"</option> ");
+     $("#reponse"+compteur).append("<option value="+i+">"+i+"</option> ");
 
                         }
                     });
@@ -157,18 +158,18 @@ function selection(){ //for the potion part
 
 
 
-function ajouter(){
-    /*var x = document.getElementById("question").innerHTML;
-    var html="<br><select><potion>and</option><option>or</option></select> "    ;
-    html+="<select id='question' "+onclick=selection()+">"+x+"</select>"
-    var y = document.getElementById("reponse").innerHTML;
-    html+="<select id='reponse' name='reponse'>"+y+"</select>";*/
-    var compteur=1;
-    var x = document.getElementById("test").innerHTML;
-    var html="<br><select id='compteur'><option>and</option><option>or</option></select> ";
-    html+=x;
+function ajouter(){ 
+    compteur++;
+    var x = document.getElementById("question1").innerHTML;
+    var y = document.getElementById("reponse1").innerHTML;
+    var html="<select id="+compteur+"><option>and</option><option>or</option></select> ";
+    html+="<select id='question"+compteur+"' name='question' onclick='selection()'  >";
+    html+=x+"</select>";
+    html+="<select id='reponse"+compteur+"' name='reponse'  >";
+    html+=y+"</select>";
+    
     document.getElementById("ajouter").innerHTML+=html;
-
+    console.log(html);
 
 
     
@@ -177,9 +178,14 @@ function ajouter(){
     }
 
     function enlver(){
-     var x= document.getElementById("ajouter");
-     
+    
+     var x= document.getElementById(compteur);
        x.remove();
+       var y= document.getElementById("question"+compteur);
+       y.remove();
+       var z= document.getElementById("reponse"+compteur);
+       z.remove();
+    compteur--;
 
     }
 
