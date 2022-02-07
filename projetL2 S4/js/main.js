@@ -45,7 +45,7 @@ $(document).ready(function () {
 
         var personnage_choisi = personnageChoisi(data);
 
-
+        console.log(personnage_choisi);
 
         for (let i = 0; i < lignes; i++) {
 
@@ -68,7 +68,13 @@ $(document).ready(function () {
 
         $("#valider").click(function () {
 
-            if (compareCaracteristique(personnage_choisi, $("#question"+compteur+" :selected").text(), $("#reponse"+compteur+" :selected").text())) {
+            if($("#question"+compteur+" :selected").text()=="prenom" && compareCaracteristique(personnage_choisi, $("#question"+compteur+" :selected").text(), $("#reponse"+compteur+" :selected").text()) == false){
+
+                GameLost(personnage_choisi["prenom"]);
+
+            }
+
+            else if (compareCaracteristique(personnage_choisi, $("#question"+compteur+" :selected").text(), $("#reponse"+compteur+" :selected").text())) {
 
                 $("#affichageReponse").empty();
 
@@ -84,7 +90,7 @@ $(document).ready(function () {
 
 
         });
-        // Envoyer vers ma funchtion chanfe
+        // Envoyer vers ma funchtion change
         $('img').click(function (image) {
 
             change(this.id, personnage_choisi.prenom);
@@ -227,6 +233,7 @@ function ajouter(){
 //abdu
 // Pour faire le X
 function change(clicked_id, repose_Ordi) {
+
     var image = document.getElementById(clicked_id);
     image.src = 'images/' + clicked_id + "X.png";
     var answer = repose_Ordi;
@@ -236,6 +243,7 @@ function change(clicked_id, repose_Ordi) {
     if (answer == clicked_id) {
         GameLost(answer);
     }
+
 }
 
 // function fin partie
