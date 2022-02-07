@@ -35,7 +35,7 @@ function compareCaracteristique(personnage_choisi,caracteristique,reponse){
 $(document).ready(function () {
 
     $.getJSON("js/jeu1.json", function (data) {
-        
+
         question();
 
         var lignes = data["ligne"];
@@ -45,20 +45,20 @@ $(document).ready(function () {
 
         var personnage_choisi = personnageChoisi(data);
 
-        console.log(personnage_choisi);
+
 
         for (let i = 0; i < lignes; i++) {
 
             var div = $("<div></div>");
             var ligne = (div).attr('class', 'ligne');
 
-            for (let j = i + ((colonnes-1) * i); (j - i - ((colonnes-1) * i)) < colonnes; j++) {
+            for (let j = i + ((colonnes - 1) * i); (j - i - ((colonnes - 1) * i)) < colonnes; j++) {
 
-                console.log(j);
+
 
                 var path_image = 'images/' + data["possibilites"][j]["fichier"];
 
-                ligne.append($("<img>").attr({'src' : path_image,'height':'150','width':"100",'id':data['possibilites'][j]['prenom']}));
+                ligne.append($("<img>").attr({ 'src': path_image, 'height': '150', 'width': "100", 'id': data['possibilites'][j]['prenom'] }));
 
             }
 
@@ -66,32 +66,36 @@ $(document).ready(function () {
 
         }
 
-        $("#valider").click(function(){
+        $("#valider").click(function () {
 
-            console.log($("#reponse"+compteur+" :selected").text());
-            console.log($("#question"+compteur+" :selected").text());
-
-            if(compareCaracteristique(personnage_choisi,$("#question"+compteur+" :selected").text(),$("#reponse"+compteur+" :selected").text())){
+            if (compareCaracteristique(personnage_choisi, $("#question :selected").text(), $("#reponse :selected").text())) {
 
                 $("#affichageReponse").empty();
 
                 $("#affichageReponse").append("OUI");
 
-            }else{
+            } else {
 
                 $("#affichageReponse").empty();
 
                 $("#affichageReponse").append("NON");
 
-            } 
+            }
+
+
+        });
+        // Envoyer vers ma funchtion chanfe
+        $('img').click(function (image) {
+
+            change(this.id, personnage_choisi.prenom);
 
         });
 
 
     });
-   
-    
-});
+
+
+}); // fin
 
 
 
@@ -162,44 +166,50 @@ function ajouter(){
     compteur++;
     var x = document.getElementById("question1").innerHTML;
     var y = document.getElementById("reponse1").innerHTML;
-    var html="<select id="+compteur+"><option>and</option><option>or</option></select> ";
-    html+=" <span id='span'>Question</span><select id='question"+compteur+"' name='question' onclick='selection()'  >";
+    var html="<br><span id='span"+compteur+""+compteur+""+compteur+"'></span><select id="+compteur+"><option>and</option><option>or</option></select> ";
+    html+=" <span id='span"+compteur+"'>Question</span><select id='question"+compteur+"' name='question' onclick='selection()'  >";
     html+=x+"</select>";
-    html+=" <span id='span'>Question</span><select id='reponse"+compteur+"' name='reponse'  >";
+    html+=" <span id='span"+compteur+""+compteur+"'>reponse</span><select id='reponse"+compteur+"' name='reponse'  >";
     html+=y+"</select>";
     
     document.getElementById("ajouter").innerHTML+=html;
-    console.log(html);
 
+ /************************************************************************* */
+   let i=compteur-1;
 
+   if(i!=1){
+    $("#"+i).hide();
 
- for(let i=1; i<compteur;i++){
+    var id3= document.getElementById(i);
+     var n3=id3.options[id3.selectedIndex].text;
+     document.getElementById("span"+i+""+i+""+i).innerHTML+=n3;
+
+     console.log(id3);
+     console.log(n3);
+  }
+ 
     $("#question"+i).hide();
-    $("#reponse1"+i).hide();
+    $("#reponse"+i).hide();
 
     var id= document.getElementById("question"+i);
-    var n=id.options[id.selectedIndex].value;
-    document.getElementById("span").innerHTML+= "<span> :    "+n+"</span>";
+    var n=id.options[id.selectedIndex].text;
+    console.log(id);
+    console.log(n);
+    document.getElementById("span"+i).innerHTML+= " :"+n;
 
     var id2= document.getElementById("reponse"+i);
-    var n2=id2.options[id2.selectedIndex].value;
-    document.getElementById("span2").innerHTML+= "<span> : "+n2+"</span>";
+    var n2=id2.options[id2.selectedIndex].text;
+    
+    document.getElementById("span"+i+""+i).innerHTML+= ":"+n2;
 
-    if(i!=1){
-        $("#"+i).hide();
-        document.getElementById("span2").innerHTML+= "<span> : "+n2+"</span>";
-
-        var id3= document.getElementById(i);
-         var n3=id3.options[id3.selectedIndex].value;
-
-    }
- }
+ 
+ 
 
     
 
 
     }
-
+/**************************************************************** */
     function enlver(){
     
      var x= document.getElementById(compteur);
@@ -234,69 +244,6 @@ function GameLost(answer) {
     document.getElementById('AffichReponse').innerHTML = 'The answer was: ' + answer;
     document.getElementById('BonReponse').innerHTML = "You Lost!!!";
 }
-$(document).ready(function () {
 
-    $.getJSON("js/jeu1.json", function (data) {
-
-        question();
-
-        var lignes = data["ligne"];
-        var colonnes = data["colonne"];
-
-        var all_characters = $('.toutesPersonnages');
-
-        var personnage_choisi = personnageChoisi(data);
-
-
-
-        for (let i = 0; i < lignes; i++) {
-
-            var div = $("<div></div>");
-            var ligne = (div).attr('class', 'ligne');
-
-            for (let j = i + ((colonnes - 1) * i); (j - i - ((colonnes - 1) * i)) < colonnes; j++) {
-
-
-
-                var path_image = 'images/' + data["possibilites"][j]["fichier"];
-
-                ligne.append($("<img>").attr({ 'src': path_image, 'height': '150', 'width': "100", 'id': data['possibilites'][j]['prenom'] }));
-
-            }
-
-            all_characters.append(ligne);
-
-        }
-
-        $("#valider").click(function () {
-
-            if (compareCaracteristique(personnage_choisi, $("#question :selected").text(), $("#reponse :selected").text())) {
-
-                $("#affichageReponse").empty();
-
-                $("#affichageReponse").append("OUI");
-
-            } else {
-
-                $("#affichageReponse").empty();
-
-                $("#affichageReponse").append("NON");
-
-            }
-
-
-        });
-        // Envoyer vers ma funchtion chanfe
-        $('img').click(function (image) {
-
-            change(this.id, personnage_choisi.prenom);
-
-        });
-
-
-    });
-
-
-}); // fin
 
 /***************************************************************************************** */
