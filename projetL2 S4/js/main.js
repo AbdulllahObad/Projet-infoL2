@@ -1,4 +1,4 @@
-function indexPersonnage(data){
+function indexPersonnage(data) {
 
     var nombre_personnages = nombrePersonnages(data);
 
@@ -6,25 +6,40 @@ function indexPersonnage(data){
 
 }
 
-function nombrePersonnages(data){
+function nombrePersonnages(data) {
 
-    return data["ligne"]*data["colonne"];
+    return data["ligne"] * data["colonne"];
 
 }
 
-function personnageChoisi(data){
+function personnageChoisi(data) {
 
     return data["possibilites"][indexPersonnage(data)];
 
 }
 
-function compareCaracteristique(personnage_choisi,caracteristique,reponse){
+function compareCaracteristique(personnage_choisi, caracteristique, reponse) {
+    console.log(personnage_choisi);
+    console.log(caracteristique);
+    console.log(reponse);
 
-    if(personnage_choisi[caracteristique]==reponse){
+    if (caracteristique == "prenom") {
+
+        if (personnage_choisi.prenom == reponse) {
+            GameWin();
+
+        }
+        else {
+            GameLost(personnage_choisi.prenom);
+        }
+    }
+
+    if (personnage_choisi[caracteristique] == reponse) {
+
 
         return true;
 
-    }else{
+    } else {
 
         return false;
 
@@ -45,7 +60,7 @@ $(document).ready(function () {
 
         var personnage_choisi = personnageChoisi(data);
 
-        console.log(personnage_choisi);
+
 
         for (let i = 0; i < lignes; i++) {
 
@@ -68,13 +83,8 @@ $(document).ready(function () {
 
         $("#valider").click(function () {
 
-            if($("#question"+compteur+" :selected").text()=="prenom" && compareCaracteristique(personnage_choisi, $("#question"+compteur+" :selected").text(), $("#reponse"+compteur+" :selected").text()) == false){
+            if (compareCaracteristique(personnage_choisi, $("#question :selected").text(), $("#reponse :selected").text())) {
 
-                GameLost(personnage_choisi["prenom"]);
-
-            }
-
-            else if (compareCaracteristique(personnage_choisi, $("#question"+compteur+" :selected").text(), $("#reponse"+compteur+" :selected").text())) {
 
                 $("#affichageReponse").empty();
 
@@ -90,7 +100,7 @@ $(document).ready(function () {
 
 
         });
-        // Envoyer vers ma funchtion change
+        // Envoyer vers ma funchtion chanfe
         $('img').click(function (image) {
 
             change(this.id, personnage_choisi.prenom);
@@ -111,7 +121,7 @@ $(document).ready(function () {
 /*********************************************************************************/
 //Ali select tag
 
-var compteur=1;
+
 
 function question() { //for the select part
     $.getJSON("js/jeu1.json", function (data) {
@@ -120,121 +130,83 @@ function question() { //for the select part
         $.each(data["possibilites"][0], function (i, o) {
             // console.log(i);
             if (i != "fichier") {
-                $("#question"+compteur).append("<option value=" + i + ">" + i + "</option> <br>");
+                $("#question").append("<option value=" + i + ">" + i + "</option> <br>");
             }
 
         });
 
-    });}
+    });
+}
 
 
 
 
 
- 
+
 
 /******************************************************************************************************** */
+function selection() { //for the potion part
+    document.getElementById("reponse").options.length = 0;
 
-function selection(){ //for the potion part
-    document.getElementById("reponse"+compteur).options.length = 0; 
+    $.getJSON("js/jeu1.json", function (data) {
+        var liste = document.getElementById('question');
 
-    $.getJSON("js/jeu1.json", function(data){
-  var liste= document.getElementById("question"+compteur);
-    
-       var value = liste.options[liste.selectedIndex].value;
-    
-   var table=[];
+        var value = liste.options[liste.selectedIndex].value;
+
+        var table = [];
 
 
-     $.each(data["possibilites"], function(i,o){
+        $.each(data["possibilites"], function (i, o) {
 
-    for(let i in o){
-        if(i==value){
-            if(!table.includes(o[i])){
-               table.push(o[i]);
-        }
-       
-    }}
-       });
+            for (let i in o) {
+                if (i == value) {
+                    if (!table.includes(o[i])) {
+                        table.push(o[i]);
+                    }
 
-     for(let i of table){
-     $("#reponse"+compteur).append("<option value="+i+">"+i+"</option> ");
-
-                        }
-                    });
                 }
+            }
+        });
+
+        for (let i of table) {
+            $("#reponse").append("<option value=" + i + ">" + i + "</option> ");
+
+
+
+
+
+        }
+    });
+}
+
+
 
 /************************************************************************************************************** */
 
 
 
-function ajouter(){ 
-    compteur++;
-    var x = document.getElementById("question1").innerHTML;
-    var y = document.getElementById("reponse1").innerHTML;
-    var html="<br><span id='span"+compteur+""+compteur+""+compteur+"'></span><select id="+compteur+"><option>and</option><option>or</option></select> ";
-    html+=" <span id='span"+compteur+"'>Question</span><select id='question"+compteur+"' name='question' onclick='selection()'  >";
-    html+=x+"</select>";
-    html+=" <span id='span"+compteur+""+compteur+"'>reponse</span><select id='reponse"+compteur+"' name='reponse'  >";
-    html+=y+"</select>";
-    
-    document.getElementById("ajouter").innerHTML+=html;
-
- /************************************************************************* */
-   let i=compteur-1;
-
-   if(i!=1){
-    $("#"+i).hide();
-
-    var id3= document.getElementById(i);
-     var n3=id3.options[id3.selectedIndex].text;
-     document.getElementById("span"+i+""+i+""+i).innerHTML+=n3;
-
-     console.log(id3);
-     console.log(n3);
-  }
- 
-    $("#question"+i).hide();
-    $("#reponse"+i).hide();
-
-    var id= document.getElementById("question"+i);
-    var n=id.options[id.selectedIndex].text;
-    console.log(id);
-    console.log(n);
-    document.getElementById("span"+i).innerHTML+= " :"+n;
-
-    var id2= document.getElementById("reponse"+i);
-    var n2=id2.options[id2.selectedIndex].text;
-    
-    document.getElementById("span"+i+""+i).innerHTML+= ":"+n2;
-
- 
- 
-
-    
+function ajouter() {
+    /*var x = document.getElementById("question").innerHTML;
+    var html="<br><select><potion>and</option><option>or</option></select> "    ;
+    html+="<select id='question' "+onclick=selection()+">"+x+"</select>"
+    var y = document.getElementById("reponse").innerHTML;
+    html+="<select id='reponse' name='reponse'>"+y+"</select>";*/
+    var compteur = 1;
+    var x = document.getElementById("test").innerHTML;
+    var html = "<br><select id='compteur'><option>and</option><option>or</option></select> ";
+    html += x;
+    document.getElementById("ajouter").innerHTML += html;
 
 
-    }
-/**************************************************************** */
-    function enlver(){
-    
-     var x= document.getElementById(compteur);
-       x.remove();
-       var y= document.getElementById("question"+compteur);
-       y.remove();
-       var z= document.getElementById("reponse"+compteur);
-       z.remove();
-    compteur--;
 
-    }
 
-    
-/************************************************************************ */
-//abdu
+
+
+}
 // Pour faire le X
 function change(clicked_id, repose_Ordi) {
-
     var image = document.getElementById(clicked_id);
+    image.setAttribute('class', 'elimine');
     image.src = 'images/' + clicked_id + "X.png";
     var answer = repose_Ordi;
     console.log(answer);
@@ -243,15 +215,36 @@ function change(clicked_id, repose_Ordi) {
     if (answer == clicked_id) {
         GameLost(answer);
     }
-
 }
 
 // function fin partie
 
 function GameLost(answer) {
-    document.getElementById('AffichReponse').innerHTML = 'The answer was: ' + answer;
-    document.getElementById('BonReponse').innerHTML = "You Lost!!!";
+    document.getElementById('AffichReponse').innerHTML = 'La Bonne Réponse Était: ' + answer;
+    document.getElementById('BonReponse').innerHTML = "Vous Avez Perdu !! ";
+}
+
+function GameWin() {
+    document.getElementById('AffichReponse').innerHTML = 'vous avez bien choisi la bonne réponse: ';
+    document.getElementById('BonReponse').innerHTML = "Bravo !!!";
+
 }
 
 
-/***************************************************************************************** */
+
+function selection2() { //for the potion part
+    document.getElementById("reponse").options.length = 0;
+
+    $.getJSON("js/jeu1.json", function (data) {
+        var liste = document.getElementById('question');
+
+        var value = liste.options[liste.selectedIndex].value;
+        console.log(value);
+    });
+}
+
+
+
+
+
+

@@ -1,66 +1,92 @@
 <!DOCTYPE html>
 <html>
-    <head>
 
-        <meta charset="UTF-8" />
-        <title>QuiEstCe</title>
-        <meta name="description" content="this is our play" />
-        <link rel="stylesheet" href="css.css">
-    
-    </head>
+<head>
 
-    <body>
+    <meta charset="UTF-8" />
+    <title>QuiEstCe</title>
+    <meta name="description" content="this is our play" />
+    <link rel="stylesheet" href="css.css">
+    <!-- Bootstrap 4 CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
-        <script type="text/javascript" src="js/main.js"></script>
+</head>
 
-        <h1>Qui est ce ?</h1>
-        <div class="jeu">
+<body>
+    <header>
+        <h1 class="PageTitle">Qui est ce ?</h1>
+    </header>
+
+
+
+    <div class="jeu">
+
+        <div class="shadow lg-10  bg-white rounded">
             <div class="toutesPersonnages">
-                
+
             </div>
 
-            <br>
-            <br>
-             <div id="AffichReponse">
+        </div>
 
+        <div id="AffichReponse">
             <div class="f">
-
-                <h3>Votre question est:<h3>
-
+                <br>
+                <p class="text-body">Votre question est:</p>
                 <form action="">
-                <div class="question" id="test" >
-                 <span id="span1">Question</span>
-                 <select id="question1" name="question" onclick="selection()" >
-               
-                 </select>
-                
-                    <span id="span11">Reponse</span>
-                    <select id="reponse1" name="reponse">
-                    </select>
-                </div>
-                <div class="question" id="ajouter" >
-                    
-                </div>
-                <br>
-                <br>
-                <div class="boutons">
-                    <input type="button" value="Ajouter" onclick="ajouter()">
-                    <input type="button" value="Enlever" onclick="enlver()">
-                </div>
-                <div class="boutons">
-                    <input type="button" value="Estimer">
-                    <input type="button" value="Valider" id="valider">
-                    <input id="triche" type="button" value="Mode Triche">
-                </div>
-                </form>
+                    <div class="question" id="test">
+                        <span>Question</span>
+                        <select id="question" name="question" onclick="selection()">
 
-                <div id="affichageReponse" align="center"></div>
+                        </select>
+
+                        <span>Reponse</span>
+                        <select id="reponse" name="reponse">
+                        </select>
+                    </div>
+                    <div class="question" id="ajouter">
+
+                    </div>
+                    <br>
+                    <br>
+                    <div class="boutons">
+                        <button type="button" value="Ajouter" class="btn btn-success"
+                            onclick="ajouter()">Ajouter</button>
+                        <button type="button" value="Enlever" class="btn btn-success"
+                            onclick="enlver()">Enlever</button>
+
+                    </div>
+                    <div class="boutons">
+                        <button type="button" value="Estimer" class="btn btn-success">Estimer</button>
+                        <button type="button" value="Valider" id="valider" class="btn btn-success">valider</button>
+                        <button type="button" value="Mode Triche" id="triche" class="btn btn-danger">
+                            Triche</button>
+
+
+                        <!-- <input type="button" value="Estimer">
+                                <input type="button" value="Valider" id="valider">
+                                <input id="triche" type="button" value="Mode Triche"> -->
+                    </div>
+                </form>
+                <div id="affichageReponse" style="color: red;"></div>
 
             </div>
         </div>
-        <div id="BonReponse"></div>
 
-    </body>
+        <div id="BonReponse" style="color: red;">
+        </div>
+        <button type=" button" value="Mode Triche" id="triche" class="btn btn-info"
+            onClick="document.location.reload(true)">Mode
+            Nouvelle partie</button>
+
+
+
+
+
+    </div>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+
+</body>
 
 </html>
