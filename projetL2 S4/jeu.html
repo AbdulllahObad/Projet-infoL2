@@ -16,6 +16,19 @@
     <header>
         <h1 class="PageTitle">Qui est ce ?</h1>
     </header>
+    <div class="container " style="width: 800px">
+
+        <div>
+            <div class="box">
+                <a class="button" href="#popup1">
+                    <img src="images/" style="width: 40px;">
+                </a>
+
+
+
+            </div>
+        </div>
+    </div>
 
 
 
@@ -38,9 +51,9 @@
                         <div class="question" id="test">
                             <span>Question</span>
                             <select id="question1" name="question" onclick="selection()">
-    
+
                             </select>
-    
+
                             <span>Reponse</span>
                             <select id="reponse1" name="reponse">
                             </select>
@@ -54,13 +67,15 @@
                     <br>
                     <div class="boutons">
                         <button type="button" value="Ajouter" id="ajouter1" class="btn btn-success">Ajouter</button>
-                        <button type="button" value="Enlever" class="btn btn-success" onclick="enlver()">Enlever</button>
+                        <button type="button" value="Enlever" class="btn btn-success"
+                            onclick="enlver()">Enlever</button>
 
                     </div>
                     <div class="boutons">
                         <button type="button" value="Estimer" class="btn btn-success">Estimer</button>
                         <button type="button" value="Valider" id="valider" class="btn btn-success">valider</button>
-                        <button type="button" value="Mode Triche" id="boutonTriche" class="btn btn-danger">Triche</button>
+                        <button type="button" value="Mode Triche" id="boutonTriche"
+                            class="btn btn-danger">Triche</button>
 
 
                         <!-- <input type="button" value="Estimer">
@@ -78,6 +93,29 @@
         <button type=" button" value="Mode Triche" id="triche" class="btn btn-info"
             onClick="document.location.reload(true)">Mode
             Nouvelle partie</button>
+        <!-- INFO SUR LES REGLES A SIUVRE -->
+        <div id="popup1" class="overlay">
+            <div class="popup">
+
+                <a class="close" href="#">&times;</a>
+                <div class="content">
+                    <span class="UpdateInfo">
+
+                        <u>
+                            <h2>Les Regles De jeu</h2>
+                        </u>
+                        <span>
+                            Vous devenez le personnage choisi par l'ordinateur .<br>
+                            Vous pouvez poser des questions autant de fois que vous voulez<br>
+                            Mais attention une fois vous choisissez le prénom le jeu se termine.
+                        </span>
+
+                        <br>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <!-- INFO SUR LES REGLES A SIUVRE -->
 
 
 
