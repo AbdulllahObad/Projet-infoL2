@@ -301,6 +301,17 @@ function afficheNombrePersoElimine(data,reponse,caracteristique){
 
 }
 
+function GameLost(answer) {
+    document.getElementById('AffichReponse').innerHTML = 'La Bonne Réponse Était: ' + answer;
+    document.getElementById('BonReponse').innerHTML = "Vous Avez Perdu !! ";
+}
+
+function GameWin() {
+    document.getElementById('AffichReponse').innerHTML = 'vous avez bien choisi la bonne réponse: ';
+    document.getElementById('BonReponse').innerHTML = "Bravo !!!";
+
+}
+
 $(document).ready(function () {
 
     $.getJSON("js/jeu1.json", function (data) {
@@ -367,13 +378,12 @@ $(document).ready(function () {
 
         });
 
-        $("#ajouter").click(function(){
+        $("#ajouter1").click(function(){
 
             nombre_questions++;
             ajouteQuestion(nombre_questions,data);
 
             selection("#question"+nombre_questions,"#reponse"+nombre_questions);
-            console.log(nombre_questions);
 
         });
 
@@ -383,7 +393,7 @@ $(document).ready(function () {
             console.log($("#question :selected").text());
 
             if(mode_triche_active){
-
+                
                 cochePersonnage(data,$("#reponse"+nombre_questions+" :selected").text(),$("#question"+nombre_questions+" :selected").text());
 
             }else{
@@ -402,11 +412,45 @@ $(document).ready(function () {
     
                 } 
 
-            }
+            };
 
             tableauQuestion(nombre_questions);*/
+            var tableau_questions = tableauQuestion(nombre_questions);
+            var tableau_connecteurs = tableauConnecteur(nombre_questions)
 
-            console.log(validerPlusieursQuestions(personnage_choisi,tableauConnecteur(nombre_questions),tableauQuestion(nombre_questions)));
+            var reponse_pc = validerPlusieursQuestions(personnage_choisi,tableau_connecteurs,tableau_questions);
+
+            if($("#question1 :selected").text()=="prenom" && reponse_pc!=true){
+
+                GameLost(personnage_choisi['prenom']);
+
+            }else if($("#question1 :selected").text()=="prenom" && reponse_pc==true){
+
+                GameWin();
+
+            }else if(mode_triche_active){
+
+                for(let i=0;i<tableau_questions.length;i++){
+
+                    if(compareCaracteristique(personnage_choisi,tableau_questions[i][0],tableau_questions[i][1])==false){
+
+                        cochePersonnage(data,tableau_questions[i][1],tableau_questions[i][0]);
+
+                    }
+
+                }
+
+            }else if(reponse_pc){
+
+                $("#affichageReponse").empty();
+                $("#affichageReponse").append("OUI");
+
+            }else{
+
+                $("#affichageReponse").empty();
+                $("#affichageReponse").append("NON");
+                
+            }
 
         });
 

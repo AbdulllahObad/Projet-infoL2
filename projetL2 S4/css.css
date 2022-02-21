@@ -42,6 +42,12 @@ color: white ;
     float: right;
 }
 
+#boutonTriche {
+    text-align: right;
+    display: inline;
+    float: right;
+}
+
 .jeu {
     background-color: rgb(224 224 224);
     padding: 2% 2% 2% 2%;
