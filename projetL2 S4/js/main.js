@@ -300,7 +300,7 @@ function cochePersonnage(personnage_choisi,data,reponse,caracteristique){
             if(data["possibilites"][i][caracteristique]!=reponse){
     
                 console.log("#"+data["possibilites"][i]["prenom"]);
-                $("#"+data["possibilites"][i]["prenom"]).attr("src",data["possibilites"][i]["prenom"]+"X.png");
+                $("#"+data["possibilites"][i]["prenom"]).attr("src","images/"+data["possibilites"][i]["prenom"]+"X.png");
             }
     
         }
@@ -312,7 +312,7 @@ function cochePersonnage(personnage_choisi,data,reponse,caracteristique){
             if(data["possibilites"][i][caracteristique]==reponse){
     
                 console.log("#"+data["possibilites"][i]["prenom"]);
-                $("#"+data["possibilites"][i]["prenom"]).attr("src",data["possibilites"][i]["prenom"]+"X.png");
+                $("#"+data["possibilites"][i]["prenom"]).attr("src","images/"+data["possibilites"][i]["prenom"]+"X.png");
             }
     
         }
@@ -362,8 +362,8 @@ $(document).ready(function () {
 
         var all_characters = $('.toutesPersonnages');
 
-        var personnage_choisi = personnageChoisi(data);
-
+        //var personnage_choisi = personnageChoisi(data);
+        var personnage_choisi = data['possibilites']['12'];
         console.log(personnage_choisi);
 
         for (let i = 0; i < lignes; i++) {
