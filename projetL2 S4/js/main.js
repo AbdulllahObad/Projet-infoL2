@@ -219,33 +219,48 @@ function selection(id_question,id_reponse){ //for the potion part
     
     }
 
-function ajouteQuestion(nombre_questions,data){
+function ajouteQuestion(nombre_questions,data,mode_triche_active){
 
     //var nombre_nouvelle_question = nombre_questions+1;
     //nombre_questions++;
 
-    var div = $("<div></div>").attr("class","question"+nombre_questions);
+    if(!mode_triche_active){
 
-    var select_connecteur = $("<select></select>").attr('id','connecteur'+nombre_questions);
+        var div = $("<div></div>").attr("class","question"+nombre_questions);
 
-    select_connecteur.append("<option>et</option>");
-    select_connecteur.append("<option>ou</option>");
+        var select_connecteur = $("<select></select>").attr('id','connecteur'+nombre_questions);
 
-    div.append(select_connecteur);
+        select_connecteur.append("<option>et</option>");
+        select_connecteur.append("<option>ou</option>");
 
-    div.append("<span>Question : </span>");
+        div.append(select_connecteur);
 
-    var select = $("<select></select>").attr('id','question'+nombre_questions);
+        div.append("<span>Question : </span>");
 
-    question(data,select);
+        var select = $("<select></select>").attr('id','question'+nombre_questions);
 
-    div.append(select);
+        question(data,select);
 
-    div.append("<span>Reponse : </span>");
+        div.append(select);
 
-    div.append($("<select></select>").attr('id','reponse'+nombre_questions));
+        div.append("<span>Reponse : </span>");
 
-    $('.listeQuestion').append(div);
+        div.append($("<select></select>").attr('id','reponse'+nombre_questions));
+
+        $('.listeQuestion').append(div);
+
+    }
+
+}
+
+function enleveQuestion(nombre_questions){
+
+    if(nombre_questions!=1){
+
+        var class_derniere_question = ".question"+nombre_questions;
+        $(class_derniere_question).remove();
+
+    }
 
 }
 
@@ -274,16 +289,32 @@ function comptePersonnage(data,reponse,caracteristique){
 
 }
 
-function cochePersonnage(data,reponse,caracteristique){
+function cochePersonnage(personnage_choisi,data,reponse,caracteristique){
 
     var nombre_personnages = nombrePersonnages(data);
 
-    for(var i=0;i<nombre_personnages;i++){
+    if(compareCaracteristique(personnage_choisi,caracteristique,reponse)==true){
 
-        if(data["possibilites"][i][caracteristique]!=reponse){
+        for(var i=0;i<nombre_personnages;i++){
 
-            console.log("#"+data["possibilites"][i]["prenom"]);
-            $("#"+data["possibilites"][i]["prenom"]).attr("src",data["possibilites"][i]["prenom"]+"X.png");
+            if(data["possibilites"][i][caracteristique]!=reponse){
+    
+                console.log("#"+data["possibilites"][i]["prenom"]);
+                $("#"+data["possibilites"][i]["prenom"]).attr("src",data["possibilites"][i]["prenom"]+"X.png");
+            }
+    
+        }
+
+    }else{
+
+        for(var i=0;i<nombre_personnages;i++){
+
+            if(data["possibilites"][i][caracteristique]==reponse){
+    
+                console.log("#"+data["possibilites"][i]["prenom"]);
+                $("#"+data["possibilites"][i]["prenom"]).attr("src",data["possibilites"][i]["prenom"]+"X.png");
+            }
+    
         }
 
     }
@@ -381,13 +412,22 @@ $(document).ready(function () {
         $("#ajouter1").click(function(){
 
             nombre_questions++;
-            ajouteQuestion(nombre_questions,data);
+            ajouteQuestion(nombre_questions,data,mode_triche_active);
 
             selection("#question"+nombre_questions,"#reponse"+nombre_questions);
 
         });
 
+        $("#enlever").click(function(){
+
+            enleveQuestion(nombre_questions);
+            nombre_questions--;
+
+        });
+
         $("#valider").click(function(){
+
+
 
             /*console.log($("#reponse :selected").text());
             console.log($("#question :selected").text());
@@ -418,6 +458,8 @@ $(document).ready(function () {
             var tableau_questions = tableauQuestion(nombre_questions);
             var tableau_connecteurs = tableauConnecteur(nombre_questions)
 
+            console.log(tableau_questions);
+
             var reponse_pc = validerPlusieursQuestions(personnage_choisi,tableau_connecteurs,tableau_questions);
 
             if($("#question1 :selected").text()=="prenom" && reponse_pc!=true){
@@ -432,11 +474,7 @@ $(document).ready(function () {
 
                 for(let i=0;i<tableau_questions.length;i++){
 
-                    if(compareCaracteristique(personnage_choisi,tableau_questions[i][0],tableau_questions[i][1])==false){
-
-                        cochePersonnage(data,tableau_questions[i][1],tableau_questions[i][0]);
-
-                    }
+                    cochePersonnage(personnage_choisi,data,tableau_questions[i][1],tableau_questions[i][0]);
 
                 }
 
