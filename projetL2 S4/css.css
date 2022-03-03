@@ -42,15 +42,12 @@ color: white ;
     float: right;
 }
 
-<<<<<<< Updated upstream
-=======
 #boutonTriche,#texteTriche {
     text-align: right;
     display: inline;
     float: right;
 }
 
->>>>>>> Stashed changes
 .jeu {
     background-color: rgb(224 224 224);
     padding: 2% 2% 2% 2%;
