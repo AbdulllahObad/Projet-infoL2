@@ -77,7 +77,7 @@
         },
         "9": {
             "fichier": "luc.png",
-            "prenom": "Luc",
+            "prenom": "luc",
             "genre": "homme",
             "cheveux": "noir",
             "lunettes": "non",
@@ -117,7 +117,7 @@
         },
         "14": {
             "fichier": "martin.png",
-            "prenom": "Martin",
+            "prenom": "martin",
             "genre": "homme",
             "cheveux": "white",
             "lunettes": "non",
