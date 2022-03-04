@@ -18,6 +18,10 @@ function change(clicked_id, reponse_Ordi) {
     if (answer == clicked_id) {
         GameLost(answer);
     }
+    else {
+        document.getElementById('correct').play();
+
+    }
 
 }
 
@@ -334,11 +338,13 @@ function afficheNombrePersoElimine(data, reponse, caracteristique) {
 function GameLost(answer) {
     document.getElementById('AffichReponse').innerHTML = 'La Bonne Réponse Était: ' + answer;
     document.getElementById('BonReponse').innerHTML = "Vous Avez Perdu !! ";
+    document.getElementById('wrong').play();
 }
 
 function GameWin() {
     document.getElementById('AffichReponse').innerHTML = 'vous avez bien choisi la bonne réponse: ';
     document.getElementById('BonReponse').innerHTML = "Bravo !!!";
+    document.getElementById('win').play();
 
 }
 
