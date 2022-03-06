@@ -6,11 +6,11 @@ function indexPersonnage(data) {
 
 }
 
-function change(clicked_id, reponse_Ordi) {
+function change(clicked_id, reponse_Ordi,data) {
 
     var image = document.getElementById(clicked_id);
     image.setAttribute("class", "elimine");
-    image.src = 'images/' + clicked_id + "X.png";
+    image.src = data["images"] + clicked_id + "X.png";
     var answer = reponse_Ordi;
     console.log(answer);
     console.log(clicked_id);
@@ -314,7 +314,7 @@ function cochePersonnage(personnage_choisi, data, reponse, caracteristique) {
             if (data["possibilites"][i][caracteristique] != reponse) {
 
                 console.log("#" + data["possibilites"][i]["prenom"]);
-                $("#" + data["possibilites"][i]["prenom"]).attr({"src":"images/" + data["possibilites"][i]["prenom"] + "X.png","class":"elimine"});
+                $("#" + data["possibilites"][i]["prenom"]).attr({"src":data["images"] + data["possibilites"][i]["prenom"] + "X.png","class":"elimine"});
             }
 
         }
@@ -326,7 +326,7 @@ function cochePersonnage(personnage_choisi, data, reponse, caracteristique) {
             if (data["possibilites"][i][caracteristique] == reponse) {
 
                 console.log("#" + data["possibilites"][i]["prenom"]);
-                $("#" + data["possibilites"][i]["prenom"]).attr({"src":"images/" + data["possibilites"][i]["prenom"] + "X.png","class":"elimine"});
+                $("#" + data["possibilites"][i]["prenom"]).attr({"src":data["images"] + data["possibilites"][i]["prenom"] + "X.png","class":"elimine"});
             }
 
         }
@@ -391,7 +391,7 @@ $(document).ready(function () {
 
                 console.log(j);
 
-                var path_image = 'images/' + data["possibilites"][j]["fichier"];
+                var path_image = data["images"] + data["possibilites"][j]["fichier"];
 
                 ligne.append($("<img>").attr({ 'src': path_image, 'height': '150', 'width': "100", 'id': data['possibilites'][j]['prenom'],'class':'coche' }));
 
@@ -421,7 +421,7 @@ $(document).ready(function () {
 
         $('img').click(function (image) {
 
-            change(this.id, personnage_choisi.prenom);
+            change(this.id, personnage_choisi.prenom,data);
 
         });
 
