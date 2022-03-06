@@ -6,9 +6,10 @@ Dans le cadre de notre projet de deuxième année S4 nous avons développé un j
 Ce jeu a été codé en JAVASCRIPT.
 Afin de pouvoir tester le jeu avec plusieurs fichiers json (que nous avons écrit) il suffit de :
 
-    - Ligne 52,127,151 et 247 du fichier main.js, rempler le premier paramètre de la methode getJSON par le path du fichier voulu :
-        exemple : getJson("js/jeu1.json",...) par getJson("js/jeu2.json",...)
+    - Ligne 1 changer le path du fichier json, exemple : var path_json = "js/jeu1.json"; devient var path_json = "js/jeu2.json";
+        il existe trois fichier voici leurs paths : js/jeu1.json, js/jeu2.json, js/jeu3.json
 
 Enfin, ouvrir le jeu avec l'extension LiveServer de vscode.
+Et n'oubliez pas de lire les règles du jeu avant de commencer !
 
 Bon jeu !
