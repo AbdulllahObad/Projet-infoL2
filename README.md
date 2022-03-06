@@ -12,4 +12,3 @@ Afin de pouvoir tester le jeu avec plusieurs fichiers json (que nous avons écri
 Enfin, ouvrir le jeu avec l'extension LiveServer de vscode.
 
 Bon jeu !
-

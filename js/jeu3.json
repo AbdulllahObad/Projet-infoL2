@@ -1,10 +1,11 @@
 {
-    "images": "personnages/",
+    "images": "images3/",
     "ligne": "3",
     "colonne": "3",
     "possibilites": {
         "0": {
             "fichier": "Brocoli.png",
+            "prenom":"Brocoli",
             "Genre": "Légumes",
             "Couleur extérieure": "Vert",
             "Sucré ou acide": "Non"
@@ -12,6 +13,7 @@
         },
         "1": {
             "fichier": "Citron.png",
+            "prenom":"Citron",
             "Genre": "Légumes",
             "Couleur extérieure": " Jaune",
             "Sucré ou acide": "Oui"
@@ -20,13 +22,15 @@
         },
         "2": {
             "fichier": "Citrouille.png",
+            "prenom":"Citrouille",
             "Genre": "Légumes",
             "Couleur extérieure": "Orange",
             "Sucré ou acide": "Oui"
             
         },
         "3": {
-            "fichier": "kiwi.png",
+            "fichier": "Kiwi.png",
+            "prenom":"Kiwi",
             "Genre": "Mazda",
             "Couleur extérieure": "Marron",
             "Sucré ou acide": "oui"
@@ -35,6 +39,7 @@
         },
         "4": {
             "fichier": "Mangue.png",
+            "prenom":"Mangue",
             "Genre": "Mazda",
             "Couleur extérieure": "Vert",
             "Sucré ou acide": "Oui"
@@ -42,6 +47,7 @@
         },
         "5": {
             "fichier": "Pastèque.png",
+            "prenom":"Pastèque",
             "Genre": "MG",
             "Couleur extérieure": "Vert",
             "Sucré ou acide": "Oui"
@@ -49,6 +55,7 @@
         },
         "6": {
             "fichier": "Pois.png",
+            "prenom":"Pois",
             "Genre": "Légumes",
             "Couleur extérieure": "Vert",
             "Sucré ou acide": "Non"
@@ -56,6 +63,7 @@
             
         "7": {
             "fichier": "PommeTerre.png",
+            "prenom":"PommeTerre",
             "Genre": "Légumes",
             "Couleur extérieure": "Marron",
             "Sucré ou acide": "Non"
@@ -63,6 +71,7 @@
         },
         "8": {
             "fichier": "Raisins.png",
+            "prenom":"Raisins",
             "Genre": "Volkswagen",
             "Couleur extérieure": "Noir",
             "Sucré ou acide": "oui"

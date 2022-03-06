@@ -4,7 +4,7 @@ function indexPersonnage(data) {
 
     var nombre_personnages = nombrePersonnages(data);
 
-    return Math.floor((Math.random() * nombre_personnages) + 1);
+    return Math.floor((Math.random() * nombre_personnages));
 
 }
 
@@ -377,6 +377,8 @@ $(document).ready(function () {
         var all_characters = $('.toutesPersonnages');
 
         var personnage_choisi = personnageChoisi(data);
+
+        console.log(personnage_choisi);
       
         for (let i = 0; i < lignes; i++) {
 
@@ -417,7 +419,7 @@ $(document).ready(function () {
 
         $('img').click(function (image) {
 
-            change(this.id, personnage_choisi.prenom,data);
+            change(this.id, personnage_choisi["prenom"],data);
 
         });
 
