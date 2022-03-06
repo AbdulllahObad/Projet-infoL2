@@ -379,10 +379,7 @@ $(document).ready(function () {
         var all_characters = $('.toutesPersonnages');
 
         var personnage_choisi = personnageChoisi(data);
-<<<<<<< Updated upstream
-        // var personnage_choisi = data['possibilites']['12'];
-=======
->>>>>>> Stashed changes
+      
         console.log(personnage_choisi);
 
         for (let i = 0; i < lignes; i++) {
