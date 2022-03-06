@@ -1,3 +1,5 @@
+var path_json = "js/jeu1.json";
+
 function indexPersonnage(data) {
 
     var nombre_personnages = nombrePersonnages(data);
@@ -12,8 +14,6 @@ function change(clicked_id, reponse_Ordi,data) {
     image.setAttribute("class", "elimine");
     image.src = data["images"] + clicked_id + "X.png";
     var answer = reponse_Ordi;
-    console.log(answer);
-    console.log(clicked_id);
 
     if (answer == clicked_id) {
         GameLost(answer);
@@ -51,11 +51,11 @@ function compareCaracteristique(personnage_choisi, caracteristique, reponse) {
 
 }
 
-function tableauQuestion(nombre_questions) {
+function tableauQuestion(count_questions) {
 
     var tableau_questions = [];
 
-    for (var i = 1; i <= nombre_questions; i++) {
+    for (var i = 1; i <= count_questions; i++) {
 
         var question_reponse_tab = [];
 
@@ -70,11 +70,11 @@ function tableauQuestion(nombre_questions) {
 
 }
 
-function tableauConnecteur(nombre_questions) {
+function tableauConnecteur(count_questions) {
 
     var tab_connecteurs = [];
 
-    for (var i = 2; i <= nombre_questions; i++) {
+    for (var i = 2; i <= count_questions; i++) {
 
         tab_connecteurs.push($("#connecteur" + i + " :selected").text());
 
@@ -182,12 +182,11 @@ function selection(id_question, id_reponse) { //for the potion part
 
         $(id_reponse).empty();
 
-        $.getJSON("js/jeu1.json", function (data) {
+        $.getJSON(path_json, function (data) {
 
             //var liste= document.getElementById('question');
 
             var value = $(id_question + " :selected").text();
-            console.log(value);
 
             var table = [];
 
@@ -222,16 +221,15 @@ function selection(id_question, id_reponse) { //for the potion part
     });
 
 }
-var count = 0;
-function ajouteQuestion(nombre_questions, data, mode_triche_active) {
+function ajouteQuestion(data, mode_triche_active,count_questions) {
 
     //var nombre_nouvelle_question = nombre_questions+1;
     //nombre_questions++;
-    count++;
-    if (!mode_triche_active && count < 4) {
-        var div = $("<div></div>").attr("class", "question" + nombre_questions);
+    if (!mode_triche_active && count_questions < 4) {
+        count_questions++;
+        var div = $("<div></div>").attr("class", "question" + count_questions);
 
-        var select_connecteur = $("<select></select>").attr('id', 'connecteur' + nombre_questions);
+        var select_connecteur = $("<select></select>").attr('id', 'connecteur' + count_questions);
 
         select_connecteur.append("<option>et</option>");
         select_connecteur.append("<option>ou</option>");
@@ -240,7 +238,7 @@ function ajouteQuestion(nombre_questions, data, mode_triche_active) {
 
         div.append("<span>Question : </span>");
 
-        var select = $("<select></select>").attr('id', 'question' + nombre_questions);
+        var select = $("<select></select>").attr('id', 'question' + count_questions);
 
         question(data, select);
 
@@ -248,22 +246,27 @@ function ajouteQuestion(nombre_questions, data, mode_triche_active) {
 
         div.append("<span>Reponse : </span>");
 
-        div.append($("<select></select>").attr('id', 'reponse' + nombre_questions));
+        div.append($("<select></select>").attr('id', 'reponse' + count_questions));
 
         $('.listeQuestion').append(div);
 
     }
 
+    return count_questions;
+
 }
 
-function enleveQuestion(nombre_questions) {
+function enleveQuestion(count_questions) {
 
-    if (nombre_questions != 1) {
+    if (count_questions != 1) {
 
-        var class_derniere_question = ".question" + nombre_questions;
+        var class_derniere_question = ".question" + count_questions;
         $(class_derniere_question).remove();
+        count_questions--;
 
     }
+
+    return count_questions;
 
 }
 
@@ -282,7 +285,6 @@ function comptePersonnage(data, reponse, caracteristique,personnage_choisi) {
 
         let id_nom = '#'+data["possibilites"][i]["prenom"];
         let class_perso = $(id_nom).attr("class");
-        console.log(personnage_choisi);
         if(personnage_choisi[caracteristique]==reponse){
 
             if (data["possibilites"][i][caracteristique] != reponse && class_perso!="elimine") {
@@ -313,7 +315,6 @@ function cochePersonnage(personnage_choisi, data, reponse, caracteristique) {
 
             if (data["possibilites"][i][caracteristique] != reponse) {
 
-                console.log("#" + data["possibilites"][i]["prenom"]);
                 $("#" + data["possibilites"][i]["prenom"]).attr({"src":data["images"] + data["possibilites"][i]["prenom"] + "X.png","class":"elimine"});
             }
 
@@ -325,7 +326,6 @@ function cochePersonnage(personnage_choisi, data, reponse, caracteristique) {
 
             if (data["possibilites"][i][caracteristique] == reponse) {
 
-                console.log("#" + data["possibilites"][i]["prenom"]);
                 $("#" + data["possibilites"][i]["prenom"]).attr({"src":data["images"] + data["possibilites"][i]["prenom"] + "X.png","class":"elimine"});
             }
 
@@ -361,17 +361,15 @@ function GameWin() {
 
 $(document).ready(function () {
 
-    $.getJSON("js/jeu1.json", function (data) {
+    $.getJSON(path_json, function (data) {
 
         var mode_triche_active = false;
 
-        var nombre_questions = 1;
+        var count_questions = 1;
 
         question(data, "#question1");
 
         selection("#question1", "#reponse1");
-
-        console.log($('#reponse'));
 
         var lignes = data["ligne"];
         var colonnes = data["colonne"];
@@ -380,16 +378,12 @@ $(document).ready(function () {
 
         var personnage_choisi = personnageChoisi(data);
       
-        console.log(personnage_choisi);
-
         for (let i = 0; i < lignes; i++) {
 
             var div = $("<div></div>");
             var ligne = (div).attr('class', 'ligne');
 
             for (let j = i + ((colonnes - 1) * i); (j - i - ((colonnes - 1) * i)) < colonnes; j++) {
-
-                console.log(j);
 
                 var path_image = data["images"] + data["possibilites"][j]["fichier"];
 
@@ -407,12 +401,14 @@ $(document).ready(function () {
 
                 mode_triche_active = true;
                 $('#texteTriche').empty();
+                $('#texteTriche').css("color","green");
                 $('#texteTriche').append('Mode triche : activé');
 
             } else {
 
                 mode_triche_active = false;
                 $('#texteTriche').empty();
+                $('#texteTriche').css("color","#dc3545");
                 $('#texteTriche').append('Mode triche : désactivé');
 
             }
@@ -427,54 +423,22 @@ $(document).ready(function () {
 
         $("#ajouter1").click(function () {
 
-            nombre_questions++;
-            ajouteQuestion(nombre_questions, data, mode_triche_active);
+            count_questions =  ajouteQuestion(data, mode_triche_active,count_questions);
 
-            selection("#question" + nombre_questions, "#reponse" + nombre_questions);
+            selection("#question" + count_questions, "#reponse" + count_questions);
 
         });
 
         $("#enlever").click(function () {
 
-            enleveQuestion(nombre_questions);
-            nombre_questions--;
+            count_questions = enleveQuestion(count_questions);
 
         });
 
         $("#valider").click(function () {
 
-
-
-            /*console.log($("#reponse :selected").text());
-            console.log($("#question :selected").text());
-
-            if(mode_triche_active){
-                
-                cochePersonnage(data,$("#reponse"+nombre_questions+" :selected").text(),$("#question"+nombre_questions+" :selected").text());
-
-            }else{
-
-                if(compareCaracteristique(personnage_choisi,$("#question"+nombre_questions+" :selected").text(),$("#reponse"+nombre_questions+" :selected").text())){
-
-                    $("#affichageReponse").empty();
-    
-                    $("#affichageReponse").append("OUI");
-    
-                }else{
-    
-                    $("#affichageReponse").empty();
-    
-                    $("#affichageReponse").append("NON");
-    
-                } 
-
-            };
-
-            tableauQuestion(nombre_questions);*/
-            var tableau_questions = tableauQuestion(nombre_questions);
-            var tableau_connecteurs = tableauConnecteur(nombre_questions)
-
-            console.log(tableau_questions);
+            var tableau_questions = tableauQuestion(count_questions);
+            var tableau_connecteurs = tableauConnecteur(count_questions)
 
             var reponse_pc = validerPlusieursQuestions(personnage_choisi, tableau_connecteurs, tableau_questions);
 
@@ -512,7 +476,7 @@ $(document).ready(function () {
 
             if (mode_triche_active) {
 
-                afficheNombrePersoElimine(data, $("#reponse" + nombre_questions + " :selected").text(), $("#question" + nombre_questions + " :selected").text(),personnage_choisi);
+                afficheNombrePersoElimine(data, $("#reponse" + count_questions + " :selected").text(), $("#question" + count_questions + " :selected").text(),personnage_choisi);
 
             }
 
