@@ -9,3 +9,7 @@ Afin de pouvoir tester le jeu avec plusieurs fichiers json (que nous avons écri
     - Ligne 52,127,151 et 247 du fichier main.js, rempler le premier paramètre de la methode getJSON par le path du fichier voulu :
         exemple : getJson("js/jeu1.json",...) par getJson("js/jeu2.json",...)
 
+Enfin, ouvrir le jeu avec l'extension LiveServer de vscode.
+
+Bon jeu !
+
