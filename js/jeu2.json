@@ -1,0 +1,79 @@
+{
+    "images": "personnages/",
+    "ligne": "3",
+    "colonne": "3",
+    "possibilites": {
+        "0": {
+            "fichier": "agathe.png",
+            "prenom": "agathe",
+            "genre": "femme",
+            "cheveux": "roux",
+            "lunettes": "non",
+            "chauve": "non"
+        },
+        "1": {
+            "fichier": "arthur.png",
+            "prenom": "arthur",
+            "genre": "homme",
+            "cheveux": "blond",
+            "lunettes": "non",
+            "chauve": "non"
+        },
+        "2": {
+            "fichier": "gasparad.png",
+            "prenom": "gasparad",
+            "genre": "homme",
+            "cheveux": "blond",
+            "lunettes": "non",
+            "chauve": "non"
+        },
+        "3": {
+            "fichier": "hugo.png",
+            "prenom": "hugo",
+            "genre": "homme",
+            "cheveux": "brun",
+            "lunettes": "non",
+            "chauve": "non"
+        },
+        "4": {
+            "fichier": "jeanne.png",
+            "prenom": "jeanne",
+            "genre": "femme",
+            "cheveux": "roux",
+            "lunettes": "non",
+            "chauve": "non"
+        },
+        "5": {
+            "fichier": "leo.png",
+            "prenom": "leo",
+            "genre": "homme",
+            "cheveux": "brun",
+            "lunettes": "non",
+            "chauve": "non"
+        },
+        "6": {
+            "fichier": "lou.png",
+            "prenom": "lou",
+            "genre": "femme",
+            "cheveux": "noir",
+            "lunettes": "non",
+            "chauve": "non"
+        },
+        "7": {
+            "fichier": "paul.png",
+            "prenom": "paul",
+            "genre": "homme",
+            "cheveux": "roux",
+            "lunettes": "non",
+            "chauve": "non"
+        },
+        "8": {
+            "fichier": "sophie.png",
+            "prenom": "sophie",
+            "genre": "femme",
+            "cheveux": "blonde",
+            "lunettes": "oui",
+            "chauve": "non"
+        }
+    }
+}
