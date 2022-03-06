@@ -273,14 +273,25 @@ function personnageElimine() {
 
 }
 
-function comptePersonnage(data, reponse, caracteristique) {
+function comptePersonnage(data, reponse, caracteristique,personnage_choisi) {
 
     var compteur = 0;
     var nombre_personnages = nombrePersonnages(data);
 
     for (var i = 0; i < nombre_personnages; i++) {
 
-        if (data["possibilites"][i][caracteristique] != reponse) {
+        let id_nom = '#'+data["possibilites"][i]["prenom"];
+        let class_perso = $(id_nom).attr("class");
+        console.log(personnage_choisi);
+        if(personnage_choisi[caracteristique]==reponse){
+
+            if (data["possibilites"][i][caracteristique] != reponse && class_perso!="elimine") {
+
+                compteur++;
+    
+            }
+
+        }else if (data["possibilites"][i][caracteristique] == reponse && class_perso!="elimine") {
 
             compteur++;
 
@@ -303,7 +314,7 @@ function cochePersonnage(personnage_choisi, data, reponse, caracteristique) {
             if (data["possibilites"][i][caracteristique] != reponse) {
 
                 console.log("#" + data["possibilites"][i]["prenom"]);
-                $("#" + data["possibilites"][i]["prenom"]).attr("src", "images/" + data["possibilites"][i]["prenom"] + "X.png");
+                $("#" + data["possibilites"][i]["prenom"]).attr({"src":"images/" + data["possibilites"][i]["prenom"] + "X.png","class":"elimine"});
             }
 
         }
@@ -315,7 +326,7 @@ function cochePersonnage(personnage_choisi, data, reponse, caracteristique) {
             if (data["possibilites"][i][caracteristique] == reponse) {
 
                 console.log("#" + data["possibilites"][i]["prenom"]);
-                $("#" + data["possibilites"][i]["prenom"]).attr("src", "images/" + data["possibilites"][i]["prenom"] + "X.png");
+                $("#" + data["possibilites"][i]["prenom"]).attr({"src":"images/" + data["possibilites"][i]["prenom"] + "X.png","class":"elimine"});
             }
 
         }
@@ -324,9 +335,9 @@ function cochePersonnage(personnage_choisi, data, reponse, caracteristique) {
 
 }
 
-function afficheNombrePersoElimine(data, reponse, caracteristique) {
+function afficheNombrePersoElimine(data, reponse, caracteristique,personnage_choisi) {
 
-    var nombre = comptePersonnage(data, reponse, caracteristique);
+    var nombre = comptePersonnage(data, reponse, caracteristique,personnage_choisi);
 
     var personnage_dispo = nombrePersonnages(data) - personnageElimine();
 
@@ -368,7 +379,10 @@ $(document).ready(function () {
         var all_characters = $('.toutesPersonnages');
 
         var personnage_choisi = personnageChoisi(data);
+<<<<<<< Updated upstream
         // var personnage_choisi = data['possibilites']['12'];
+=======
+>>>>>>> Stashed changes
         console.log(personnage_choisi);
 
         for (let i = 0; i < lignes; i++) {
@@ -382,7 +396,7 @@ $(document).ready(function () {
 
                 var path_image = 'images/' + data["possibilites"][j]["fichier"];
 
-                ligne.append($("<img>").attr({ 'src': path_image, 'height': '150', 'width': "100", 'id': data['possibilites'][j]['prenom'] }));
+                ligne.append($("<img>").attr({ 'src': path_image, 'height': '150', 'width': "100", 'id': data['possibilites'][j]['prenom'],'class':'coche' }));
 
             }
 
@@ -501,7 +515,7 @@ $(document).ready(function () {
 
             if (mode_triche_active) {
 
-                afficheNombrePersoElimine(data, $("#reponse" + nombre_questions + " :selected").text(), $("#question" + nombre_questions + " :selected").text());
+                afficheNombrePersoElimine(data, $("#reponse" + nombre_questions + " :selected").text(), $("#question" + nombre_questions + " :selected").text(),personnage_choisi);
 
             }
 
