@@ -387,7 +387,7 @@ $(document).ready(function () {
 
                 var path_image = data["images"] + data["possibilites"][j]["fichier"];
 
-                ligne.append($("<img>").attr({ 'src': path_image, 'height': '150', 'width': "100", 'id': data['possibilites'][j]['prenom'],'class':'coche' }));
+                ligne.append($("<img>").attr({ 'src': path_image, 'id': data['possibilites'][j]['prenom'],'class':'coche' }).css({"height":"22.5%","width":"15%"}));
 
             }
 
