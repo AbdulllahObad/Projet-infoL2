@@ -1,0 +1,74 @@
+{
+    "images": "personnages/",
+    "ligne": "3",
+    "colonne": "3",
+    "possibilites": {
+        "0": {
+            "fichier": "Brocoli.png",
+            "Genre": "Légumes",
+            "Couleur extérieure": "Vert",
+            "Sucré ou acide": "Non"
+           
+        },
+        "1": {
+            "fichier": "Citron.png",
+            "Genre": "Légumes",
+            "Couleur extérieure": " Jaune",
+            "Sucré ou acide": "Oui"
+        
+            
+        },
+        "2": {
+            "fichier": "Citrouille.png",
+            "Genre": "Légumes",
+            "Couleur extérieure": "Orange",
+            "Sucré ou acide": "Oui"
+            
+        },
+        "3": {
+            "fichier": "kiwi.png",
+            "Genre": "Mazda",
+            "Couleur extérieure": "Marron",
+            "Sucré ou acide": "oui"
+            
+            
+        },
+        "4": {
+            "fichier": "Mangue.png",
+            "Genre": "Mazda",
+            "Couleur extérieure": "Vert",
+            "Sucré ou acide": "Oui"
+            
+        },
+        "5": {
+            "fichier": "Pastèque.png",
+            "Genre": "MG",
+            "Couleur extérieure": "Vert",
+            "Sucré ou acide": "Oui"
+            
+        },
+        "6": {
+            "fichier": "Pois.png",
+            "Genre": "Légumes",
+            "Couleur extérieure": "Vert",
+            "Sucré ou acide": "Non"
+        },
+            
+        "7": {
+            "fichier": "PommeTerre.png",
+            "Genre": "Légumes",
+            "Couleur extérieure": "Marron",
+            "Sucré ou acide": "Non"
+            
+        },
+        "8": {
+            "fichier": "Raisins.png",
+            "Genre": "Volkswagen",
+            "Couleur extérieure": "Noir",
+            "Sucré ou acide": "oui"
+            
+        }
+    }
+}
+    
+        
