@@ -1,4 +1,7 @@
-var path_json = "js/jeu1.json";
+var path_json = "js/jeu3.json";
+//l'attribut principale pour identifier les objets
+var id_Personnage = "prenom";
+
 
 function indexPersonnage(data) {
 
@@ -8,7 +11,23 @@ function indexPersonnage(data) {
 
 }
 
-function change(clicked_id, reponse_Ordi,data) {
+//vérification si les objets(dans le fichier json) ont des prenoms ,
+//ou juste des noms (voitures, légumes,instruments,.....etc)
+function Prenom_existe(data) {
+
+    $.each(data["possibilites"][0], function (i) {
+
+        if (i != "Prenom") {
+
+            id_Personnage = "nom";
+
+        }
+
+    });
+
+}
+
+function change(clicked_id, reponse_Ordi, data) {
 
     var image = document.getElementById(clicked_id);
     image.setAttribute("class", "elimine");
@@ -221,7 +240,7 @@ function selection(id_question, id_reponse) { //for the potion part
     });
 
 }
-function ajouteQuestion(data, mode_triche_active,count_questions) {
+function ajouteQuestion(data, mode_triche_active, count_questions) {
 
     //var nombre_nouvelle_question = nombre_questions+1;
     //nombre_questions++;
@@ -276,24 +295,24 @@ function personnageElimine() {
 
 }
 
-function comptePersonnage(data, reponse, caracteristique,personnage_choisi) {
+function comptePersonnage(data, reponse, caracteristique, personnage_choisi) {
 
     var compteur = 0;
     var nombre_personnages = nombrePersonnages(data);
 
     for (var i = 0; i < nombre_personnages; i++) {
 
-        let id_nom = '#'+data["possibilites"][i]["prenom"];
+        let id_nom = '#' + data["possibilites"][i][id_Personnage];
         let class_perso = $(id_nom).attr("class");
-        if(personnage_choisi[caracteristique]==reponse){
+        if (personnage_choisi[caracteristique] == reponse) {
 
-            if (data["possibilites"][i][caracteristique] != reponse && class_perso!="elimine") {
+            if (data["possibilites"][i][caracteristique] != reponse && class_perso != "elimine") {
 
                 compteur++;
-    
+
             }
 
-        }else if (data["possibilites"][i][caracteristique] == reponse && class_perso!="elimine") {
+        } else if (data["possibilites"][i][caracteristique] == reponse && class_perso != "elimine") {
 
             compteur++;
 
@@ -315,7 +334,7 @@ function cochePersonnage(personnage_choisi, data, reponse, caracteristique) {
 
             if (data["possibilites"][i][caracteristique] != reponse) {
 
-                $("#" + data["possibilites"][i]["prenom"]).attr({"src":data["images"] + data["possibilites"][i]["prenom"] + "X.png","class":"elimine"});
+                $("#" + data["possibilites"][i][id_Personnage]).attr({ "src": data["images"] + data["possibilites"][i][id_Personnage] + "X.png", "class": "elimine" });
             }
 
         }
@@ -326,7 +345,7 @@ function cochePersonnage(personnage_choisi, data, reponse, caracteristique) {
 
             if (data["possibilites"][i][caracteristique] == reponse) {
 
-                $("#" + data["possibilites"][i]["prenom"]).attr({"src":data["images"] + data["possibilites"][i]["prenom"] + "X.png","class":"elimine"});
+                $("#" + data["possibilites"][i][id_Personnage]).attr({ "src": data["images"] + data["possibilites"][i][id_Personnage] + "X.png", "class": "elimine" });
             }
 
         }
@@ -335,9 +354,9 @@ function cochePersonnage(personnage_choisi, data, reponse, caracteristique) {
 
 }
 
-function afficheNombrePersoElimine(data, reponse, caracteristique,personnage_choisi) {
+function afficheNombrePersoElimine(data, reponse, caracteristique, personnage_choisi) {
 
-    var nombre = comptePersonnage(data, reponse, caracteristique,personnage_choisi);
+    var nombre = comptePersonnage(data, reponse, caracteristique, personnage_choisi);
 
     var personnage_dispo = nombrePersonnages(data) - personnageElimine();
 
@@ -368,6 +387,8 @@ $(document).ready(function () {
         var count_questions = 1;
 
         question(data, "#question1");
+        // fonction de vérification,si nom ou prénom existe dans le fichier json
+        Prenom_existe(data)
 
         selection("#question1", "#reponse1");
 
@@ -379,7 +400,7 @@ $(document).ready(function () {
         var personnage_choisi = personnageChoisi(data);
 
         console.log(personnage_choisi);
-      
+
         for (let i = 0; i < lignes; i++) {
 
             var div = $("<div></div>");
@@ -389,7 +410,7 @@ $(document).ready(function () {
 
                 var path_image = data["images"] + data["possibilites"][j]["fichier"];
 
-                ligne.append($("<img>").attr({ 'src': path_image, 'id': data['possibilites'][j]['prenom'],'class':'coche' }).css({"height":"22.5%","width":"15%"}));
+                ligne.append($("<img>").attr({ 'src': path_image, 'id': data['possibilites'][j][id_Personnage], 'class': 'coche' }).css({ "height": "22.5%", "width": "15%" }));
 
             }
 
@@ -403,14 +424,14 @@ $(document).ready(function () {
 
                 mode_triche_active = true;
                 $('#texteTriche').empty();
-                $('#texteTriche').css("color","green");
+                $('#texteTriche').css("color", "green");
                 $('#texteTriche').append('Mode triche : activé');
 
             } else {
 
                 mode_triche_active = false;
                 $('#texteTriche').empty();
-                $('#texteTriche').css("color","#dc3545");
+                $('#texteTriche').css("color", "#dc3545");
                 $('#texteTriche').append('Mode triche : désactivé');
 
             }
@@ -419,13 +440,13 @@ $(document).ready(function () {
 
         $('img').click(function (image) {
 
-            change(this.id, personnage_choisi["prenom"],data);
+            change(this.id, personnage_choisi[id_Personnage], data);
 
         });
 
         $("#ajouter1").click(function () {
 
-            count_questions =  ajouteQuestion(data, mode_triche_active,count_questions);
+            count_questions = ajouteQuestion(data, mode_triche_active, count_questions);
 
             selection("#question" + count_questions, "#reponse" + count_questions);
 
@@ -444,11 +465,11 @@ $(document).ready(function () {
 
             var reponse_pc = validerPlusieursQuestions(personnage_choisi, tableau_connecteurs, tableau_questions);
 
-            if ($("#question1 :selected").text() == "prenom" && reponse_pc != true) {
+            if ($("#question1 :selected").text() == id_Personnage && reponse_pc != true) {
 
-                GameLost(personnage_choisi['prenom']);
+                GameLost(personnage_choisi[id_Personnage]);
 
-            } else if ($("#question1 :selected").text() == "prenom" && reponse_pc == true) {
+            } else if ($("#question1 :selected").text() == id_Personnage && reponse_pc == true) {
 
                 GameWin();
 
@@ -478,7 +499,7 @@ $(document).ready(function () {
 
             if (mode_triche_active) {
 
-                afficheNombrePersoElimine(data, $("#reponse" + count_questions + " :selected").text(), $("#question" + count_questions + " :selected").text(),personnage_choisi);
+                afficheNombrePersoElimine(data, $("#reponse" + count_questions + " :selected").text(), $("#question" + count_questions + " :selected").text(), personnage_choisi);
 
             }
 
