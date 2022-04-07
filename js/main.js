@@ -12,7 +12,7 @@ function change(clicked_id, reponse_Ordi,data) {
 
     var image = document.getElementById(clicked_id);
     image.setAttribute("class", "elimine");
-    image.src = data["images"] + clicked_id + "X.png";
+    image.src = data["images"]+"X.png";
     var answer = reponse_Ordi;
 
     if (answer == clicked_id) {
@@ -315,7 +315,7 @@ function cochePersonnage(personnage_choisi, data, reponse, caracteristique) {
 
             if (data["possibilites"][i][caracteristique] != reponse) {
 
-                $("#" + data["possibilites"][i]["prenom"]).attr({"src":data["images"] + data["possibilites"][i]["prenom"] + "X.png","class":"elimine"});
+                $("#" + data["possibilites"][i]["prenom"]).attr({"src":data["images"]+"X.png","class":"elimine"});
             }
 
         }
@@ -326,7 +326,7 @@ function cochePersonnage(personnage_choisi, data, reponse, caracteristique) {
 
             if (data["possibilites"][i][caracteristique] == reponse) {
 
-                $("#" + data["possibilites"][i]["prenom"]).attr({"src":data["images"] + data["possibilites"][i]["prenom"] + "X.png","class":"elimine"});
+                $("#" + data["possibilites"][i]["prenom"]).attr({"src":data["images"]+ "X.png","class":"elimine"});
             }
 
         }
