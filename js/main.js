@@ -1,6 +1,6 @@
-var path_json = "js/jeu3.json";
+var path_json = "js/jeu1.json";
 //l'attribut principale pour identifier les objets
-var id_Personnage = "prenom";
+var id_Personnage = "nom";
 
 
 function indexPersonnage(data) {
@@ -17,9 +17,9 @@ function Prenom_existe(data) {
 
     $.each(data["possibilites"][0], function (i) {
 
-        if (i != "Prenom") {
+        if (i = "prenom") {
 
-            id_Personnage = "nom";
+            id_Personnage = "prenom";
 
         }
 
@@ -30,8 +30,8 @@ function Prenom_existe(data) {
 function change(clicked_id, reponse_Ordi, data) {
 
     var image = document.getElementById(clicked_id);
-    image.setAttribute("class", "elimine");
-    image.src = data["images"]+"X.png";
+    // image.setAttribute("class", "elimine");
+    image.src = data["images"] + "X.png";
     var answer = reponse_Ordi;
 
     if (answer == clicked_id) {
@@ -334,11 +334,7 @@ function cochePersonnage(personnage_choisi, data, reponse, caracteristique) {
 
             if (data["possibilites"][i][caracteristique] != reponse) {
 
-<<<<<<< HEAD
                 $("#" + data["possibilites"][i][id_Personnage]).attr({ "src": data["images"] + data["possibilites"][i][id_Personnage] + "X.png", "class": "elimine" });
-=======
-                $("#" + data["possibilites"][i]["prenom"]).attr({"src":data["images"]+"X.png","class":"elimine"});
->>>>>>> dc0d119484a83c7252842ee3647a795e97008182
             }
 
         }
@@ -349,11 +345,7 @@ function cochePersonnage(personnage_choisi, data, reponse, caracteristique) {
 
             if (data["possibilites"][i][caracteristique] == reponse) {
 
-<<<<<<< HEAD
                 $("#" + data["possibilites"][i][id_Personnage]).attr({ "src": data["images"] + data["possibilites"][i][id_Personnage] + "X.png", "class": "elimine" });
-=======
-                $("#" + data["possibilites"][i]["prenom"]).attr({"src":data["images"]+ "X.png","class":"elimine"});
->>>>>>> dc0d119484a83c7252842ee3647a795e97008182
             }
 
         }
