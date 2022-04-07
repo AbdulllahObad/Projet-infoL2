@@ -334,6 +334,7 @@ function cochePersonnage(personnage_choisi, data, reponse, caracteristique) {
 
             if (data["possibilites"][i][caracteristique] != reponse) {
 
+<<<<<<< HEAD
                 $("#" + data["possibilites"][i][id_Personnage]).attr({ "src": data["images"] + data["possibilites"][i][id_Personnage] + "X.png", "class": "elimine" });
 =======
                 $("#" + data["possibilites"][i]["prenom"]).attr({"src":data["images"]+"X.png","class":"elimine"});
