@@ -1,0 +1,61 @@
+/** Main styles **/
+
+
+/* Lilita One */
+ @import url("https://fonts.googleapis.com/css2?family=Lilita+One&display=swap"); 
+
+body {
+margin: 0px;
+width: 100%;
+height: 100%;
+
+}
+*{
+    font-family: "Lilita One", sans-serif;
+
+}
+.Wrapper {
+    min-height: 100%;
+    letter-spacing: -0.5px;
+}
+.header {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+}
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 8px;
+}
+
+.Container {
+    width: 720px;
+    margin-bottom: 16px;
+    padding: 8px;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgb(0 0 0 / 20%);
+    background-color: #fff;
+}
+#NicknameInput{
+    border-color: rgb(100, 44, 161);
+    color: red;
+    width: -webkit-fill-available;
+}
+#OpenHostForm{
+    width: 100%;
+    -webkit-appearance: none;
+    padding: 4px 8px;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    opacity: 1;
+    background-color: transparent;
+    color: #ffa000;
+    cursor: pointer;
+    font-size: 18px;
+    letter-spacing: 0;
+    transition-duration: 0.2s;
+}
+

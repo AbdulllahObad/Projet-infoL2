@@ -1,0 +1,18 @@
+{
+  "name": "jouer-a-deux",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.3",
+    "socket.io": "^4.4.1",
+    "sweetalert": "^2.1.2",
+    "sweetalert2": "^11.4.8"
+  }
+}

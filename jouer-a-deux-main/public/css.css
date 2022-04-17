@@ -1,0 +1,298 @@
+/** Main styles **/
+
+
+/* Lilita One */
+@import url("https://fonts.googleapis.com/css2?family=Lilita+One&display=swap");
+
+body {
+    background-color: white;
+    color: white;
+    width: 100%;
+    height: 100%;
+
+}
+
+
+* {
+    font-family: "Lilita One", sans-serif;
+
+}
+
+.toutesPersonnages {
+    height: 80%;
+    padding: 2%;
+    text-align: center;
+}
+
+.personnage {
+    padding: 1%;
+    display: inline;
+}
+
+.question {
+    display: inline;
+    padding: 2%;
+    text-align: center;
+}
+
+.boutons {
+    text-align: left;
+    padding: 3px;
+}
+
+#triche {
+    text-align: right;
+    display: inline;
+    float: right;
+}
+
+#boutonTriche,
+#texteTriche {
+    text-align: right;
+    display: inline;
+    float: right;
+}
+
+
+.jeu {
+    background-color: rgb(224 224 224);
+    padding: 2% 2% 0% 2%;
+    margin: 0% 31%;
+    border-radius: 2%;
+    box-shadow: -17px 8px 16px 0px rgb(0 0 0 / 20%);
+}
+
+
+/* input {
+    background-color: rgb(212, 212, 212);
+    color: rgb(0, 0, 0);
+    border-radius: 5%;
+    border-color: transparent;
+    padding: 1%;
+    margin: 1px;
+} */
+
+
+
+h1 {
+    text-align: center;
+    color: rgb(0, 0, 59);
+
+}
+
+h3 {
+    display: inline;
+}
+
+span {
+    font-size: medium;
+}
+
+form {
+    display: inline;
+}
+
+.toutesQuestions {
+    text-align: center;
+}
+
+/* INFO SUR LES REGLES */
+
+
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.overlay:target {
+    visibility: visible;
+    opacity: 1;
+}
+
+.popup {
+    margin: 70px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 5px;
+    width: 30%;
+    position: relative;
+    transition: all 5s ease-in-out;
+}
+
+.popup h2 {
+    margin-top: 0;
+    color: white;
+}
+
+.popup .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    transition: all 200ms;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+}
+
+.popup .close:hover {
+    color: #06D85F;
+}
+
+.container.mt-5 {
+    position: relative;
+    top: -75px;
+
+}
+
+.popup .content {
+    max-height: 30%;
+    overflow: auto;
+}
+
+.UpdateInfo {
+    color: #de1744;
+    font-size: 14px;
+
+
+}
+
+
+
+#game-card {
+    height: 77%;
+    width: 73%;
+    display: flex;
+
+}
+
+#estimer,
+#valider,
+#FinTurn,
+#ajouter1,
+#enlever {
+    max-width: 77.73px;
+    max-height: 38px;
+    font-size: 15px;
+
+}
+#waiting-area,#rooms-card{
+    margin-right: 28%;
+    margin-left: 14%;
+   }
+   #user-card{
+    margin-right: 28%;
+    margin-left: 14%;
+   }
+
+@media screen and (max-width: 420px) {
+    body {
+        background-color: white;
+        color: white;
+        width: 100%;
+        height: 100%;
+
+    }
+
+    #turn-message {
+        height: 100%;
+        width: 100%;
+        display: flex;
+    }
+
+    #game-card {
+        height: 100%;
+        width: 100%;
+
+        display: flex;
+
+
+    }
+
+    .container.mt-5 {
+        width: 100%;
+        height: 100%;
+        padding-top: 15%;
+    }
+
+    .Wrapper {
+        min-height: 100%;
+        letter-spacing: -0.5px;
+    }
+
+    .header {
+        display: flex;
+        align-items: center;
+        padding: 16px;
+    }
+}
+
+
+@media screen and (max-width: 1440px) {
+    body {
+        background-color: white;
+        color: white;
+        width: 100%;
+        height: 100%;
+
+    }
+}
+
+@media screen and (max-width: 851px) {
+    body {
+        background-color: white;
+        color: white;
+        width: 230%;
+        height: 100%;
+
+    }
+}
+
+
+#turn-message {
+    height: 85%;
+    width: 40%;
+    text-align: center;
+    margin: -3% -1% 1% 30%;
+    position: relative;
+    top: -2%;
+}
+
+#game-card {
+    height: 100%;
+    width: 100%;
+    display: flex;
+
+}
+
+.container.mt-5 {
+    width: 100%;
+    height: 100%;
+}
+
+.Wrapper {
+    min-height: 100%;
+    letter-spacing: -0.5px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+}
+
+.card {
+    border: 0;
+
+}
+
+.card-body {
+    background-color: #eee;
+}

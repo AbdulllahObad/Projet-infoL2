@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <link rel="shortcut icon" href="#">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale = 1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- other page*******************************-->
+    <title>QuiEstCe</title>
+    <meta name="description" content="this is our play" />
+    <link rel="stylesheet" href="css.css">
+
+</head>
+
+<body>
+    <div class="Wrapper">
+        <div class="img" id="img">
+            <!-- Header -->
+            <header>
+                <img src="images/background.png" style="width: 12%;height: 12%;">
+            </header>
+            <!-- Content -->
+        </div>
+        <main>
+
+
+
+
+            <!-- RoomsErea*************************************************************** -->
+            <div class="rooms-erea" id="rooms-erea">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 offset-md-3">
+
+                        <div class="card mb-3" id="user-card">
+                            <div class="card-body">
+
+                                <form method="GET" id="form">
+                                    <div class="mb-3">
+
+                                        <label for="username" class="form-label" style="color: black;">Nom
+                                            d'utilisateur</label>
+                                        <input type="text" class="form-control" id="username" minlength="2"
+                                            maxlength="20" placeholder="Saisir votre nom d'utilisateur" required>
+                                    </div>
+                                    <button class="btn btn-primary" id="start" type="submit" style="color: black;">Créer
+                                        un salon privée</button>
+                                </form>
+
+                            </div>
+                        </div>
+
+                        <div class="card mb-3 d-none" id="rooms-card">
+                            <!-- d-none est pour rendre le div invisible -->
+                            <div class="card-header" style="color: black" style="background-color: #d3d347;">Salons
+                                disponibles</div>
+                            <ul class="list-group list-group-flush" id="rooms-list" style="background-color: #d3d347;">
+                            </ul>
+                        </div>
+
+                        <div class="d-none" id="waiting-area">
+                            <div class="card mb-3">
+                                <div class="card-header" style="color: black;">En attente d'un autre joueur</div>
+                                <div class="card-body mx-auto">
+                                    <div class="spinner-border" role="status">
+                                        <span class="visually-hidden" style="color: black;">O</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-body text-center" style="color: black;">
+                                    Partage ce lien pour inviter quelqu'un à jouer avec toi<br>
+                                    <span id="link-to-share">https://jouer-a-deux.herokuapp.com/</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- gaaaaaaaaaaaaaaaaaaaaaaaaaame************************************* -->
+            <div class="alert " role="alert" id="turn-message"></div>
+
+
+            <div class="card d-none" id="game-card">
+                <div class="jeu">
+                    <div class="shadow lg-10  bg-white rounded">
+                        <div class="toutesPersonnages">
+
+                        </div>
+
+                    </div>
+
+                    <div id="AffichReponse">
+                        <div class="f">
+                            <br>
+                            <p class="text-body">Votre question est:</p>
+                            <form action="">
+                                <div class="listeQuestion">
+
+                                    <div class="question" id="test">
+                                        <span style="color: black;">Question</span>
+                                        <select id="question1" name="question" onclick="selection()">
+                                            <option>Caractéristique</option>
+                                        </select>
+
+                                        <span style="color: black;">Reponse</span>
+                                        <select id="reponse1" name="reponse">
+                                        </select>
+                                    </div>
+
+                                </div>
+                                <div class="question" id="ajouter">
+
+                                </div>
+                                <br>
+                                <br>
+                                <div class="boutons">
+                                    <button type="button" value="Ajouter" id="ajouter1"
+                                        class="btn btn-success">Ajouter</button>
+                                    <button type="button" value="Enlever" id="enlever"
+                                        class="btn btn-success">Enlever</button>
+
+                                </div>
+                                <div class="boutons" id="buttonsgame">
+                                    <button type="button" value="Estimer" id="estimer"
+                                        class="btn btn-success">Estimer</button>
+                                    <button type="button" value="Valider" id="valider"
+                                        class="btn btn-success">valider</button>
+                                    <button type="button" value="FinTurn" id="FinTurn"
+                                        class="btn btn-success">FinTurn</button>
+                                    <button type="button" value="Mode Triche" id="boutonTriche"
+                                        class="btn btn-danger">Triche</button>
+
+
+                                    <!-- <input type="button" value="Estimer">
+                                            <input type="button" value="Valider" id="valider">
+                                            <input id="triche" type="button" value="Mode Triche"> -->
+                                </div>
+
+                            </form>
+
+                            <div id="affichageReponse" style="color: red;"></div>
+
+                        </div>
+                    </div>
+
+                    <div id="BonReponse" style="color: red;">
+                    </div>
+
+
+
+                    <!-- INFO SUR LES REGLES A SIUVRE -->
+                    <div id="popup1" class="overlay">
+                        <div class="popup">
+
+                            <a class="close" href="#">&times;</a>
+                            <div class="content">
+                                <span class="UpdateInfo">
+
+                                    <u>
+                                        <h2>Les Regles De jeu</h2>
+                                    </u>
+                                    <span>
+                                        1)Vous devenez le personnage choisi par l'ordinateur .<br>
+                                        2)Vous posez vos questions autant de fois que vous voulez<br>
+                                        ❗Mais attention❗ une fois vous choisissez le prénom le jeu se termine.<br>
+                                        3) Vous avez le droit de tricher ici 😉 , Avec le button mode triche vous
+                                        n'avez pas
+                                        besoin
+                                        de éliminer les personnages en cliquant c'est lui qui le fait<br>
+                                        4)Quand vous illuminez le mauvais personnage vous perdez donc soyez prudent
+
+                                    </span>
+
+                                    <br>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- INFO SUR LES REGLES A SIUVRE -->
+
+                    <!-- <button type=" button" value="Mode Triche" id="triche" class="btn btn-info" onClick="document.location.reload(true)"> Nouvelle partie</button> -->
+                    <div id="nombreTriche"></div>
+
+                    <object data="music/background.mp3" width="0" height="0"></object>
+
+                </div>
+            </div>
+
+
+
+        </main>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.1/socket.io.js"></script>
+    <script src="client.js"></script>
+
+</body>
+
+</html>
