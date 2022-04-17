@@ -1,0 +1,92 @@
+@import url("https://fonts.googleapis.com/css2?family=Lilita+One");
+*{
+    font-family: "Lilita One", sans-serif;
+}
+body{
+
+    margin: 0;
+    font-family: "Lilita One", sans-serif;
+}
+#gris{
+
+    position: absolute;
+    opacity: 40%;
+    background-color: black;
+    height: 100%;
+    width: 100%;
+    visibility: hidden;
+
+}
+.div_attribut,.attributperso{
+
+    /* display: inline-block; */
+    visibility: hidden;
+    position: absolute;
+    min-height: 400px;
+    max-width: 500px;
+    width: 70%;
+    background-color: white;
+    margin: auto;
+    right:0;
+    left:0;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 0px rgb(19 19 19);
+    z-index: 1;
+    
+
+}
+ .attributperso{
+
+    font-size: 80%;
+
+}
+img{
+    
+    width: 100%;
+    height: auto;
+
+}
+.container2{
+
+    background-color: rgb(225, 225, 225);;
+    width: 50%;
+    min-width: 500px;
+    margin: auto;
+    /* /border: 3px solid; */
+    border-radius: 7px;
+    vertical-align: middle;
+    border: solid;
+    border-color: rgb(218, 218, 218);
+    box-shadow: 0px 0px 10px rgb(131, 131, 131);
+
+}
+.container1{
+
+    /* border: 1.5px solid; */
+    box-shadow: 0px 0px 10px rgb(161, 161, 161);
+    border-radius: 5px;
+    margin-top: 5px;
+    padding: 2px;
+
+}
+.personnage{
+    transition-property: background-color,box-shadow;
+    transition-duration: 600ms;
+}
+.personnage:hover{
+
+    background-color: rgb(200, 255, 200);
+    box-shadow: 0px 0px 10px 0px rgb(19 19 19);
+
+}
+.attributperso label{
+
+    width:15%;
+    display:inline-block;
+   
+    
+}
+.attributperso input{
+    display:inline-block;
+    
+}

@@ -1,0 +1,164 @@
+
+
+body {
+    text-align: center;
+    background-color: white;
+    color: black;
+}
+.container1{
+
+    display:inline-flex;
+    display: inline-block;
+    width: 70%;
+    /* max-height: 80px; */
+}
+.form{
+
+    float: left;
+    height: 100%;
+    width: 20%;
+    margin: auto;
+}.form2{
+
+    float: left;
+    height: 100%;
+    width: 20%;
+    margin: auto;
+}
+
+.toutesPersonnages {
+    height: 80%;
+    padding: 2%;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.personnage {
+    display: inline-block;
+    border: 1px solid;
+    border-color: black;
+    border-radius: 8px;
+    background-color: rgb(255, 255, 255);
+}
+img{
+    border-radius: 8px; 
+}
+.ligne{
+    display: block;
+}
+.but{
+
+    height: 100%;
+    color: #fff;
+    background-color: #28a745;
+    border-color: #28a745;
+
+}
+button,input[type=submit]{
+
+    color: #fff;
+    background-color: #28a745;
+    border-color: #28a745;
+    border:1px solid transparent;
+    border-radius:2px;
+    margin: 1px;
+
+}
+button:hover,input[type=submit]:hover{
+
+    background:#135313;
+}
+.output{
+    width: 50%;
+    margin: auto;
+    vertical-align: middle;
+    font-family: "arial";
+    font-size: 11px;
+    border-width: 2px;
+    border-style: inset;
+    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+    border-image: initial;
+}
+@media screen and (max-width:1480px){
+
+    .form{
+        width: 100%;
+    }
+    .form2{
+        width: 100%;
+    }
+    .form>input{
+        width: 95%;
+        height: 30px;
+        position: relative;
+        display: block;
+        margin: auto;
+        padding: 0;
+    }
+    .button{
+        margin-top: 1%;
+        width: 95%;
+        color: #fff;
+        background-color: #28a745;
+        border-color: #28a745;
+        border:1px solid transparent;
+        border-radius:2px;
+        margin: 1px;
+        font-size: 100%;
+    }
+    .gris{
+        z-index: 1;
+    }
+    .div_attribut>input,.div_attribut>button{
+        right: 30%;
+        left: 30%;
+    }
+}
+@media screen and (min-width:1480px){
+
+    .button{
+        width: 100%;
+        max-height: 25px;
+    }
+    .val_reset{
+        float: left;
+        width: 20%;
+    }
+    .form{
+        width: 30%;
+    }
+    .form>input{
+        width: 95%;
+    }
+
+    /* .form{
+
+        float: left;
+
+    }
+    .ens,.div-btn-attribut{
+        border:1px solid;
+        width: 170px;
+        float: left;
+        margin-top: 10px;
+        height: 50px;
+    }
+    .div-valide{
+        width: 170px;
+        float: left;
+        margin-top: 10px;
+        height: 50px;
+    }
+    .div-valide input{
+
+        width: 50%;
+        float: left;
+
+    }
+    button,input[type=submit]{
+
+        width: 25%;
+    
+    } */
+
+}
