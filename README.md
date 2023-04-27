@@ -13,3 +13,6 @@ Enfin, ouvrir le jeu avec l'extension LiveServer de vscode.
 Et n'oubliez pas de lire les règles du jeu avant de commencer !
 
 Bon jeu !
+
+
+![Alt text](https://github.com/AbdulllahObad/Projet-infoL2/blob/main/Capture%20d%E2%80%99%C3%A9cran%20(48).png)
